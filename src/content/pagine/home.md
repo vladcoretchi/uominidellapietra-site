@@ -24,7 +24,7 @@ tecnica:
   - quota: 66
     testo: metri in trimix normossico
 leggenda_titolo: Gli altri cercavano la scintilla del fuoco. Noi quella della curiosità.
-leggenda_testo: Molto prima del fuoco, sul ramo di Lecco del lago di Como, cinque sconsiderati scoprirono che con un sasso in mano si arrivava fino al fondo.
+leggenda_testo: Molto prima del fuoco, sul ramo di Lecco del lago di Como, cinque sconsiderati scoprirono che con una *pietra* in mano si arrivava fino al fondo.
 cta_titolo: La prima bolla è gratis.
 cta_bottone: Prenota il battesimo
 ---

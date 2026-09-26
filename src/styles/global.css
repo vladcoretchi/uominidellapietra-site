@@ -100,16 +100,28 @@ a.card:hover { border-color: var(--slate); }
 .hero-art { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; }
 .hero .depth-mark { top: 236px; z-index: -1; }
 .hero-content { padding: 290px var(--pad) 80px; max-width: 980px; display: flex; flex-direction: column; gap: 22px; }
-@keyframes rise { 0% { transform: translateY(0); opacity: 0 } 15% { opacity: .85 } 100% { transform: translateY(-420px); opacity: 0 } }
+@keyframes rise { 0% { transform: translateY(0); opacity: 0 } 15% { opacity: .85 } 100% { transform: translateY(-260px); opacity: 0 } }
 @keyframes sway { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+/* Diver crosses the lake behind the text, turns and comes back */
+@keyframes swim { 0% { transform: translate(-220px, 470px) } 49% { transform: translate(1660px, 470px) } 51% { transform: translate(1660px, 510px) } 99% { transform: translate(-220px, 510px) } 100% { transform: translate(-220px, 470px) } }
+@keyframes swim-m { 0% { transform: translate(380px, 470px) } 49% { transform: translate(1060px, 470px) } 51% { transform: translate(1060px, 510px) } 99% { transform: translate(380px, 510px) } 100% { transform: translate(380px, 470px) } }
+@keyframes flip { 0%, 50% { transform: scaleX(1) } 50.01%, 100% { transform: scaleX(-1) } }
 @media (prefers-reduced-motion: no-preference) {
-  .bub { animation: rise 7s linear infinite; }
-  .b2 { animation-delay: -1.8s; animation-duration: 8s; }
-  .b3 { animation-delay: -3.6s; animation-duration: 6s; }
-  .b4 { animation-delay: -5s; animation-duration: 9s; }
+  .swim { animation: swim 40s linear infinite; }
+  .flip { animation: flip 40s linear infinite; }
+  .bub { animation: rise 5s linear infinite; }
+  .b2 { animation-delay: -1.3s; animation-duration: 6s; }
+  .b3 { animation-delay: -2.6s; animation-duration: 4.5s; }
+  .b4 { animation-delay: -3.8s; animation-duration: 7s; }
   .diver { animation: sway 5s ease-in-out infinite; }
 }
-@media (max-width: 700px) { .hero-diver { display: none; } .hero { min-height: 700px; } }
+@media (max-width: 700px) {
+  .hero { min-height: 700px; }
+  @media (prefers-reduced-motion: no-preference) { .swim, .flip { animation-duration: 22s; } .swim { animation-name: swim-m; } }
+}
+
+/* Words marked with *asterisks* in the CMS */
+.accent-word { color: var(--ember); }
 
 /* Tech depths */
 .depths { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,.2); }

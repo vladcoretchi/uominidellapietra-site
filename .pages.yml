@@ -101,7 +101,7 @@ content:
     path: src/content/pagine/home.md
     fields:
       - { name: hero_luogo, label: Apertura - luogo, type: string }
-      - { name: hero_titolo, label: Apertura - titolo, type: string }
+      - { name: hero_titolo, label: "Apertura - titolo (*parola* = arancione)", type: string }
       - { name: hero_testo, label: Apertura - testo, type: text }
       - { name: percorso_titolo, label: Percorso - titolo, type: string }
       - name: percorso
@@ -122,9 +122,9 @@ content:
         fields:
           - { name: quota, label: Quota (m), type: number }
           - { name: testo, label: Testo, type: string }
-      - { name: leggenda_titolo, label: Leggenda - frase, type: text }
-      - { name: leggenda_testo, label: Leggenda - testo, type: text }
-      - { name: cta_titolo, label: Fascia finale - titolo, type: string }
+      - { name: leggenda_titolo, label: "Leggenda - frase (*parola* = arancione)", type: text }
+      - { name: leggenda_testo, label: "Leggenda - testo (*parola* = arancione)", type: text }
+      - { name: cta_titolo, label: "Fascia finale - titolo (*parola* = arancione)", type: string }
       - { name: cta_bottone, label: Fascia finale - bottone, type: string }
 
   - name: leggenda

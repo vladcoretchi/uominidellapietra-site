@@ -1,0 +1,34 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import EventLists from '../../components/EventLists.astro';
+import { TIPI_EVENTO } from '../../content.config';
+import { eventiDivisi } from '../../lib/eventi';
+
+const p = (await getEntry('pagine', 'eventi'))!.data as any;
+const { tutti } = await eventiDivisi();
+const presenti = new Set(tutti.map((e) => e.data.tipo));
+const tipi = Object.entries(TIPI_EVENTO).filter(([k]) => presenti.has(k));
+---
+<Base title={p.titolo} description={p.intro}>
+  <PageHead depth="-18 m" tone="deep" tag={p.etichetta} title={p.titolo} intro={p.intro} />
+  <section class="paper stack-lg">
+    <div class="filters" role="group" aria-label="Filtra per tipo">
+      <button type="button" data-filtro="" aria-pressed="true">Tutti</button>
+      {tipi.map(([k, v]) => <button type="button" data-filtro={k} aria-pressed="false">{v}</button>)}
+    </div>
+    <EventLists paper />
+  </section>
+</Base>
+<script>
+  // Filter events by type, keeping the date split done by EventLists
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-filtro]')];
+  buttons.forEach((b) =>
+    b.addEventListener('click', () => {
+      const f = b.dataset.filtro;
+      buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      document.querySelectorAll<HTMLElement>('[data-evento]').forEach((r) => (r.hidden = Boolean(f) && r.dataset.tipo !== f));
+    }),
+  );
+</script>

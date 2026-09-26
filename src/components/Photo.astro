@@ -1,0 +1,6 @@
+---
+// Image or labelled placeholder when no photo is uploaded yet
+interface Props { src?: string; alt: string; label?: string; class?: string; style?: string }
+const { src, alt, label = 'Foto in arrivo', class: cls = '', style } = Astro.props;
+---
+{src ? <img src={src} alt={alt} class={`photo ${cls}`} style={style} loading="lazy" /> : <div class={`photo ${cls}`} style={style} role="img" aria-label={alt}>{label}</div>}

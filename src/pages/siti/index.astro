@@ -1,0 +1,27 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Photo from '../../components/Photo.astro';
+
+const p = (await getEntry('pagine', 'siti'))!.data as any;
+const siti = (await getCollection('siti')).sort((a, b) => a.data.ordine - b.data.ordine || a.data.nome.localeCompare(b.data.nome));
+---
+<Base title={p.titolo} description={p.intro}>
+  <PageHead depth="-25 m" tone="abyss" tag={p.etichetta} title={p.titolo} intro={p.intro} />
+  <section class="paper">
+    <div class="grid">
+      {siti.map((s) => (
+        <a class="card" href={`/siti/${s.id}/`}>
+          <Photo src={s.data.copertina} alt={s.data.nome} style="height: 220px" />
+          <div class="card-body">
+            <span class="chip">{s.data.lago}</span>
+            <h3>{s.data.nome}</h3>
+            <p class="muted">{[s.data.profondita && `fino a ${s.data.profondita} m`, s.data.livello].filter(Boolean).join(', ')}</p>
+            {s.data.descrizione && <p class="muted">{s.data.descrizione}</p>}
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>

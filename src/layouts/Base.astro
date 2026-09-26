@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import s from '../data/impostazioni.json';
+interface Props { title?: string; description?: string }
+const { title, description = `${s.nome}: ${s.sottotitolo}. Corsi, uscite ai laghi di Como e Iseo, subacquea tecnica e sottoghiaccio.` } = Astro.props;
+const fullTitle = title ? `${title} | ${s.nome}` : `${s.nome} | ${s.sottotitolo}`;
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/corsi/', label: 'Corsi' },
+  { href: '/eventi/', label: 'Eventi' },
+  { href: '/leggenda/', label: 'La leggenda' },
+  { href: '/contatti/', label: 'Contatti' },
+];
+const active = (h: string) => (h === '/' ? path === '/' : path.startsWith(h));
+---
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta name="theme-color" content="#111518" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,400..900&family=Source+Sans+3:wght@400;600&display=swap" />
+</head>
+<body>
+  <a class="sr-only" href="#contenuto">Vai al contenuto</a>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <Logo />
+      <span><span class="brand-name">{s.nome}</span><span class="brand-sub">{s.sottotitolo}</span></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav" aria-label="Principale">
+      {nav.map((n) => <a href={n.href} aria-current={active(n.href) ? 'page' : undefined}>{n.label}</a>)}
+      <a class="btn btn-ember" href="/contatti/">Prova gratuita</a>
+    </nav>
+  </header>
+  <main id="contenuto"><slot /></main>
+  <footer class="site-footer">
+    <div>
+      <strong class="brand-name">{s.ragione_sociale}</strong>
+      <span class="soft">{s.sede}</span>
+      <span class="soft">C.F. {s.codice_fiscale}</span>
+    </div>
+    <div>
+      <strong>Associazione</strong>
+      {s.statuto && <a href={s.statuto}>Statuto e regolamenti</a>}
+      {s.safeguarding && <a href={s.safeguarding}>Safeguarding e tutela minori</a>}
+      <a href="/siti/">Siti d'immersione</a>
+      <a href="/eventi/">Eventi</a>
+    </div>
+    <div>
+      <strong>Seguici</strong>
+      {s.facebook && <a href={s.facebook}>Facebook</a>}
+      {s.instagram && <a href={s.instagram}>Instagram</a>}
+      {s.email && <a href={`mailto:${s.email}`}>{s.email}</a>}
+      <span style="color: var(--ember)">Istruttori certificati CMAS-PTA</span>
+    </div>
+  </footer>
+  <script>
+    // Mobile menu toggle
+    const b = document.querySelector<HTMLButtonElement>('.menu-toggle');
+    const n = document.getElementById('nav');
+    b?.addEventListener('click', () => {
+      const open = n!.classList.toggle('open');
+      b.setAttribute('aria-expanded', String(open));
+    });
+  </script>
+</body>
+</html>

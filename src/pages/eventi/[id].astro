@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Photo from '../../components/Photo.astro';
+import { dataLunga, tipoLabel } from '../../lib/eventi';
+
+export async function getStaticPaths() {
+  const eventi = await getCollection('eventi', (e) => !e.data.bozza);
+  return eventi.map((e) => ({ params: { id: e.id }, props: { evento: e } }));
+}
+const { evento } = Astro.props;
+const d = evento.data;
+const { Content } = await render(evento);
+const hasBody = Boolean(evento.body?.trim());
+---
+<Base title={d.titolo} description={d.descrizione}>
+  <PageHead depth="-18 m" tone="deep" tag={tipoLabel(d.tipo)} title={d.titolo} intro={d.descrizione}>
+    <p class="soft" style="margin: 0; font-size: 19px"><strong style="color: #fff">{dataLunga(evento)}</strong>{d.luogo && <>, {d.luogo}</>}{d.livello && <> - {d.livello}</>}</p>
+  </PageHead>
+  <section class="paper stack-lg">
+    <div class="grid" style="--cols: 3; gap: 48px">
+      <div class="stack" style="grid-column: span 2">
+        {d.copertina && <Photo src={d.copertina} alt={d.titolo} style="border-radius: var(--radius); max-height: 520px" />}
+        {hasBody ? <div class="prose"><Content /></div> : <p class="muted">Il resoconto arriverà dopo l'evento.</p>}
+      </div>
+      <aside class="card" style="align-self: start">
+        <div class="card-body">
+          <h3>Dettagli</h3>
+          <p><strong>Quando:</strong> {dataLunga(evento)}</p>
+          {d.luogo && <p><strong>Dove:</strong> {d.luogo}</p>}
+          {d.livello && <p><strong>Livello:</strong> {d.livello}</p>}
+          {d.iscrizione && <p><strong>Iscrizioni:</strong> {d.iscrizione}</p>}
+          <a class="btn btn-ember" href="/contatti/" style="margin-top: 8px">Chiedi informazioni</a>
+        </div>
+      </aside>
+    </div>
+    {d.galleria.length > 0 && (
+      <div class="stack">
+        <h2 class="display h-sm" style="color: var(--slate)">Foto</h2>
+        <div class="gallery">{d.galleria.map((src, i) => <a href={src}><img src={src} alt={`${d.titolo}, foto ${i + 1}`} loading="lazy" /></a>)}</div>
+      </div>
+    )}
+    <a class="link" href="/eventi/" style="align-self: flex-start">Torna agli eventi</a>
+  </section>
+</Base>

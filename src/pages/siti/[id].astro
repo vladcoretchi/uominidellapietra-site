@@ -1,0 +1,35 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Photo from '../../components/Photo.astro';
+
+export async function getStaticPaths() {
+  const siti = await getCollection('siti');
+  return siti.map((s) => ({ params: { id: s.id }, props: { sito: s } }));
+}
+const { sito } = Astro.props;
+const d = sito.data;
+const { Content } = await render(sito);
+---
+<Base title={d.nome} description={d.descrizione}>
+  <PageHead depth={d.profondita ? `-${d.profondita} m` : '-25 m'} tone="abyss" tag={d.lago} title={d.nome} intro={d.descrizione} />
+  <section class="paper stack-lg">
+    <div class="grid" style="--cols: 3; gap: 48px">
+      <div class="stack" style="grid-column: span 2">
+        <Photo src={d.copertina} alt={d.nome} style="border-radius: var(--radius); min-height: 320px; max-height: 520px" />
+        <div class="prose"><Content /></div>
+      </div>
+      <aside class="card" style="align-self: start">
+        <div class="card-body">
+          <h3>Scheda</h3>
+          {d.profondita && <p><strong>Profondità:</strong> fino a {d.profondita} m</p>}
+          {d.livello && <p><strong>Livello:</strong> {d.livello}</p>}
+          {d.ingresso && <p><strong>Ingresso:</strong> {d.ingresso}</p>}
+        </div>
+      </aside>
+    </div>
+    {d.galleria.length > 0 && <div class="gallery">{d.galleria.map((src, i) => <a href={src}><img src={src} alt={`${d.nome}, foto ${i + 1}`} loading="lazy" /></a>)}</div>}
+    <a class="link" href="/siti/" style="align-self: flex-start">Tutti i siti</a>
+  </section>
+</Base>

@@ -1,0 +1,14 @@
+---
+import { type Evento, isoDay, fineEvento, giorno, anno, tipoLabel } from '../lib/eventi';
+interface Props { evento: Evento; hidden?: boolean }
+const { evento, hidden = false } = Astro.props;
+const d = evento.data;
+---
+<a class="event-row" href={`/eventi/${evento.id}/`} data-evento data-fine={isoDay(fineEvento(evento))} data-inizio={isoDay(d.data_inizio)} data-tipo={d.tipo} hidden={hidden}>
+  <span class="event-date">{giorno(d.data_inizio)}<small>{anno(d.data_inizio)}</small></span>
+  <span>
+    <span class="event-title">{d.titolo}</span><br />
+    <span class="event-meta">{[d.luogo, d.livello].filter(Boolean).join(', ')}</span>
+  </span>
+  <span class="event-type">{tipoLabel(d.tipo)}</span>
+</a>

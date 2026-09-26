@@ -1,0 +1,13 @@
+---
+import Depth from './Depth.astro';
+interface Props { depth: string; tone?: 'base' | 'deep' | 'abyss' | 'night'; tag?: string; title: string; intro?: string }
+const { depth, tone = 'base', tag, title, intro } = Astro.props;
+---
+<Depth depth={depth} tone={tone}>
+  <div class="stack" style="gap: 18px">
+    {tag && <p class="tag">{tag}</p>}
+    <h1 class="display h-lg">{title}</h1>
+    {intro && <p class="lead soft">{intro}</p>}
+    <slot />
+  </div>
+</Depth>

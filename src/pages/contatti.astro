@@ -1,0 +1,45 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Depth from '../components/Depth.astro';
+import s from '../data/impostazioni.json';
+
+const p = (await getEntry('pagine', 'contatti'))!.data as any;
+---
+<Base title="Contatti" description={p.intro}>
+  <Depth depth="0 m" tone="base">
+    <div class="grid" style="--cols: 2; gap: 56px; align-items: start">
+      <div class="stack">
+        <p class="tag">{p.etichetta}</p>
+        <h1 class="display h-lg">{p.titolo}</h1>
+        <p class="lead soft">{p.intro}</p>
+        <div class="card-glass" style="gap: 4px"><strong>Piscina</strong><span>{s.piscina}</span><span class="soft">{s.orari_piscina}</span></div>
+        <div class="card-glass" style="gap: 4px"><strong>Sede</strong><span>{s.sede}</span><span class="soft">{[s.email, s.telefono].filter(Boolean).join(' - ')}</span></div>
+      </div>
+      <form class="form" data-email={s.email} action={`mailto:${s.email}`} method="post" enctype="text/plain">
+        <h2 class="display h-sm" style="color: var(--slate)">Prenota il battesimo</h2>
+        <label for="f-nome">Nome e cognome</label>
+        <input id="f-nome" name="nome" type="text" autocomplete="name" required />
+        <label for="f-mail">Email</label>
+        <input id="f-mail" name="email" type="email" autocomplete="email" required />
+        <label for="f-tel">Telefono</label>
+        <input id="f-tel" name="telefono" type="tel" autocomplete="tel" />
+        <label for="f-data">Serata preferita</label>
+        <select id="f-data" name="serata">{(p.serate ?? []).map((d: string) => <option>{d}</option>)}</select>
+        <label class="check"><input type="checkbox" name="privacy" required /><span>Ho letto la privacy policy e acconsento a essere ricontattato.</span></label>
+        <button class="btn btn-ember" type="submit">Invia richiesta</button>
+        <p class="muted" style="margin: 0; font-size: 14px">La richiesta si apre nel tuo programma di posta, pronta da inviare.</p>
+      </form>
+    </div>
+  </Depth>
+</Base>
+<script>
+  // Demo: compose a prefilled email until a real form backend exists
+  const form = document.querySelector<HTMLFormElement>('form[data-email]');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const f = new FormData(form);
+    const body = `Nome: ${f.get('nome')}\nEmail: ${f.get('email')}\nTelefono: ${f.get('telefono')}\nSerata: ${f.get('serata')}`;
+    location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent('Prenotazione battesimo')}&body=${encodeURIComponent(body)}`;
+  });
+</script>

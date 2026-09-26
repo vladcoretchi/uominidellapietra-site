@@ -1,0 +1,42 @@
+---
+// Upcoming and past lists; a small script re-splits them by the visitor's date
+import EventRow from './EventRow.astro';
+import { eventiDivisi } from '../lib/eventi';
+interface Props { limit?: number; paper?: boolean }
+const { limit = 0, paper = false } = Astro.props;
+const { prossimi, passati } = await eventiDivisi();
+const show = (i: number) => limit > 0 && i >= limit;
+---
+<div class={`grid ${paper ? 'on-paper' : ''}`} style="--cols: 2; gap: 48px" data-liste-eventi data-limit={limit}>
+  <div class="stack" style="gap: 8px">
+    <h3 class="display h-sm">In programma</h3>
+    <div data-prossimi>
+      {prossimi.map((e, i) => <EventRow evento={e} hidden={show(i)} />)}
+    </div>
+    <p class="empty" data-vuoto-prossimi hidden={prossimi.length > 0}>Nuove date in arrivo: segui i nostri canali.</p>
+  </div>
+  <div class="stack" style="gap: 8px">
+    <h3 class="display h-sm">Com'è andata</h3>
+    <div data-passati>
+      {passati.map((e, i) => <EventRow evento={e} hidden={show(i)} />)}
+    </div>
+    <p class="empty" data-vuoto-passati hidden={passati.length > 0}>Qui troverai i resoconti delle uscite.</p>
+  </div>
+</div>
+<script>
+  // Move events that ended since the last build into the past list
+  const oggi = new Date().toISOString().slice(0, 10);
+  document.querySelectorAll<HTMLElement>('[data-liste-eventi]').forEach((box) => {
+    const limit = Number(box.dataset.limit || 0);
+    const up = box.querySelector<HTMLElement>('[data-prossimi]')!;
+    const past = box.querySelector<HTMLElement>('[data-passati]')!;
+    const rows = [...box.querySelectorAll<HTMLElement>('[data-evento]')];
+    const next = rows.filter((r) => r.dataset.fine! >= oggi).sort((a, b) => a.dataset.inizio!.localeCompare(b.dataset.inizio!));
+    const done = rows.filter((r) => r.dataset.fine! < oggi).sort((a, b) => b.dataset.inizio!.localeCompare(a.dataset.inizio!));
+    up.replaceChildren(...next);
+    past.replaceChildren(...done);
+    [next, done].forEach((list) => list.forEach((r, i) => (r.hidden = limit > 0 && i >= limit)));
+    box.querySelector<HTMLElement>('[data-vuoto-prossimi]')!.hidden = next.length > 0;
+    box.querySelector<HTMLElement>('[data-vuoto-passati]')!.hidden = done.length > 0;
+  });
+</script>

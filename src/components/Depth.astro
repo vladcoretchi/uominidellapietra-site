@@ -1,0 +1,9 @@
+---
+// Section with the depth shown as a large muted background mark
+interface Props { depth: string; tone?: 'base' | 'deep' | 'abyss' | 'night'; class?: string; id?: string }
+const { depth, tone = 'base', class: cls = '', id } = Astro.props;
+---
+<section id={id} class={`depth tone-${tone} ${cls}`}>
+  <span class="depth-mark" aria-hidden="true">{depth}</span>
+  <slot />
+</section>

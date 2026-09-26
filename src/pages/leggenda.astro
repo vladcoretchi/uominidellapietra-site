@@ -1,0 +1,26 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Photo from '../components/Photo.astro';
+
+const entry = (await getEntry('pagine', 'leggenda'))!;
+const p = entry.data as any;
+const { Content } = await render(entry);
+---
+<Base title={p.titolo} description={p.citazione}>
+  <PageHead depth="-66 m" tone="night" tag={p.etichetta} title={p.titolo}>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap">
+      {(p.fondatori ?? []).map((f: string) => <span style="padding: 6px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.3)">{f}</span>)}
+    </div>
+  </PageHead>
+  <section class="paper">
+    <div class="grid" style="--cols: 3; gap: 56px">
+      <div style="grid-column: span 2" class="stack">
+        <div class="prose"><Content /></div>
+        {p.citazione && <p class="display" style="font-size: clamp(28px, 3vw, 40px); line-height: 1.1; font-stretch: 70%; text-transform: none; letter-spacing: 0; color: var(--slate)">{p.citazione}</p>}
+      </div>
+      <Photo src={p.illustrazione} alt="Illustrazione della leggenda" label="Illustrazione in arrivo" style="border-radius: var(--radius); min-height: 360px; background: var(--mist); color: var(--slate-deep)" />
+    </div>
+  </section>
+</Base>

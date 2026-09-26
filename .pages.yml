@@ -1,0 +1,199 @@
+# Pages CMS configuration (https://pagescms.org)
+media:
+  input: public/uploads
+  output: /uploads
+
+content:
+  # Events: outings, holidays, social dinners and more
+  - name: eventi
+    label: Eventi
+    type: collection
+    path: src/content/eventi
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [titolo, data_inizio, tipo]
+      primary: titolo
+      sort: [data_inizio, titolo]
+      default:
+        sort: data_inizio
+        order: desc
+    fields:
+      - { name: titolo, label: Titolo, type: string, required: true }
+      - name: tipo
+        label: Tipo di evento
+        type: select
+        required: true
+        default: uscita-lago
+        options:
+          values:
+            - { value: uscita-lago, label: Uscita al lago }
+            - { value: uscita-mare, label: Uscita al mare }
+            - { value: vacanza, label: Vacanza }
+            - { value: settimana-blu, label: Settimana blu }
+            - { value: cena-sociale, label: Cena sociale }
+            - { value: corso, label: Corso }
+            - { value: altro, label: Altro }
+      - { name: data_inizio, label: Data (o primo giorno), type: date, required: true }
+      - { name: data_fine, label: Ultimo giorno (solo per eventi di più giorni), type: date }
+      - { name: luogo, label: Luogo, type: string }
+      - { name: livello, label: Livello richiesto, type: string }
+      - { name: descrizione, label: Descrizione breve (annuncio), type: text }
+      - { name: iscrizione, label: Come iscriversi, type: string }
+      - { name: copertina, label: Foto di copertina, type: image }
+      - { name: galleria, label: Galleria foto, type: image, list: true }
+      - { name: bozza, label: Bozza (non pubblicare ancora), type: boolean, default: false }
+      - { name: body, label: Resoconto (dopo l'evento), type: rich-text }
+
+  # Dive sites: not in the menu, linked from home and footer
+  - name: siti
+    label: Siti d'immersione
+    type: collection
+    path: src/content/siti
+    filename: "{primary}.md"
+    view:
+      fields: [nome, lago, in_evidenza]
+      primary: nome
+    fields:
+      - { name: nome, label: Nome del sito, type: string, required: true }
+      - { name: lago, label: Lago o zona, type: string, required: true }
+      - { name: profondita, label: Profondità massima (m), type: number }
+      - { name: livello, label: Livello consigliato, type: string }
+      - { name: ingresso, label: Ingresso e logistica, type: text }
+      - { name: descrizione, label: Descrizione breve, type: text }
+      - { name: copertina, label: Foto di copertina, type: image }
+      - { name: galleria, label: Galleria foto, type: image, list: true }
+      - { name: in_evidenza, label: Mostra in home, type: boolean, default: false }
+      - { name: ordine, label: Ordine (numero più basso prima), type: number, default: 100 }
+      - { name: body, label: Scheda completa, type: rich-text }
+
+  - name: corsi
+    label: Corsi
+    type: collection
+    path: src/content/corsi
+    filename: "{primary}.md"
+    view:
+      fields: [titolo, categoria, ordine]
+      primary: titolo
+      sort: [ordine]
+    fields:
+      - { name: titolo, label: Nome del corso, type: string, required: true }
+      - name: categoria
+        label: Categoria
+        type: select
+        required: true
+        default: ricreativo
+        options:
+          values:
+            - { value: ricreativo, label: Ricreativo }
+            - { value: tecnico, label: Tecnico }
+      - { name: etichetta, label: Etichetta (es. Livello 1), type: string }
+      - { name: quota, label: Profondità massima (m, solo tecnici), type: number }
+      - { name: prerequisiti, label: Prerequisiti, type: string }
+      - { name: durata, label: Durata, type: string }
+      - { name: prezzo, label: Prezzo, type: string }
+      - { name: ordine, label: Ordine (numero più basso prima), type: number, default: 100 }
+      - { name: body, label: Descrizione, type: rich-text }
+
+  # Page texts
+  - name: home
+    label: "Pagina: Home"
+    type: file
+    path: src/content/pagine/home.md
+    fields:
+      - { name: hero_luogo, label: Apertura - luogo, type: string }
+      - { name: hero_titolo, label: Apertura - titolo, type: string }
+      - { name: hero_testo, label: Apertura - testo, type: text }
+      - { name: percorso_titolo, label: Percorso - titolo, type: string }
+      - name: percorso
+        label: Percorso - tappe
+        type: object
+        list: true
+        fields:
+          - { name: titolo, label: Titolo, type: string }
+          - { name: testo, label: Testo, type: text }
+      - { name: eventi_titolo, label: Eventi - titolo, type: string }
+      - { name: laghi_titolo, label: Laghi - titolo, type: string }
+      - { name: laghi_testo, label: Laghi - testo, type: text }
+      - { name: tecnica_titolo, label: Tecnica - titolo, type: string }
+      - name: tecnica
+        label: Tecnica - quote
+        type: object
+        list: true
+        fields:
+          - { name: quota, label: Quota (m), type: number }
+          - { name: testo, label: Testo, type: string }
+      - { name: leggenda_titolo, label: Leggenda - frase, type: text }
+      - { name: leggenda_testo, label: Leggenda - testo, type: text }
+      - { name: cta_titolo, label: Fascia finale - titolo, type: string }
+      - { name: cta_bottone, label: Fascia finale - bottone, type: string }
+
+  - name: leggenda
+    label: "Pagina: La leggenda"
+    type: file
+    path: src/content/pagine/leggenda.md
+    fields:
+      - { name: titolo, label: Titolo, type: string }
+      - { name: etichetta, label: Etichetta, type: string }
+      - { name: fondatori, label: Fondatori, type: string, list: true }
+      - { name: citazione, label: Citazione in evidenza, type: text }
+      - { name: illustrazione, label: Illustrazione, type: image }
+      - { name: body, label: Racconto, type: rich-text }
+
+  - name: pagina-corsi
+    label: "Pagina: Corsi"
+    type: file
+    path: src/content/pagine/corsi.md
+    fields:
+      - { name: titolo, label: Titolo, type: string }
+      - { name: etichetta, label: Etichetta, type: string }
+      - { name: intro, label: Introduzione, type: text }
+      - { name: titolo_ricreativi, label: Titolo sezione ricreativi, type: string }
+      - { name: titolo_tecnici, label: Titolo sezione tecnici, type: string }
+
+  - name: pagina-eventi
+    label: "Pagina: Eventi"
+    type: file
+    path: src/content/pagine/eventi.md
+    fields:
+      - { name: titolo, label: Titolo, type: string }
+      - { name: etichetta, label: Etichetta, type: string }
+      - { name: intro, label: Introduzione, type: text }
+
+  - name: pagina-siti
+    label: "Pagina: Siti d'immersione"
+    type: file
+    path: src/content/pagine/siti.md
+    fields:
+      - { name: titolo, label: Titolo, type: string }
+      - { name: etichetta, label: Etichetta, type: string }
+      - { name: intro, label: Introduzione, type: text }
+
+  - name: contatti
+    label: "Pagina: Contatti"
+    type: file
+    path: src/content/pagine/contatti.md
+    fields:
+      - { name: titolo, label: Titolo, type: string }
+      - { name: etichetta, label: Etichetta, type: string }
+      - { name: intro, label: Introduzione, type: text }
+      - { name: serate, label: Serate disponibili per il battesimo, type: string, list: true }
+
+  - name: impostazioni
+    label: Impostazioni generali
+    type: file
+    path: src/data/impostazioni.json
+    format: json
+    fields:
+      - { name: nome, label: Nome, type: string }
+      - { name: sottotitolo, label: Sottotitolo, type: string }
+      - { name: ragione_sociale, label: Ragione sociale, type: string }
+      - { name: sede, label: Indirizzo sede, type: string }
+      - { name: codice_fiscale, label: Codice fiscale, type: string }
+      - { name: piscina, label: Indirizzo piscina, type: string }
+      - { name: orari_piscina, label: Giorni e orari piscina, type: string }
+      - { name: email, label: Email, type: string }
+      - { name: telefono, label: Telefono, type: string }
+      - { name: facebook, label: Link Facebook, type: string }
+      - { name: instagram, label: Link Instagram, type: string }
+      - { name: statuto, label: Statuto (PDF), type: file }
+      - { name: safeguarding, label: Documento safeguarding (PDF), type: file }

@@ -1,0 +1,103 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Depth from '../components/Depth.astro';
+import HeroArt from '../components/HeroArt.astro';
+import Photo from '../components/Photo.astro';
+import EventLists from '../components/EventLists.astro';
+
+const h = (await getEntry('pagine', 'home'))!.data as any;
+const siti = (await getCollection('siti', (s) => s.data.in_evidenza)).sort((a, b) => a.data.ordine - b.data.ordine).slice(0, 3);
+const [primo, ...altri] = siti;
+---
+<Base>
+  <section class="hero">
+    <HeroArt />
+    <span class="depth-mark" aria-hidden="true">0 m</span>
+    <div class="hero-content">
+      <p class="tag">{h.hero_luogo}</p>
+      <h1 class="display h-xl">{h.hero_titolo}</h1>
+      <p class="lead">{h.hero_testo}</p>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap">
+        <a class="btn btn-ember" href="/contatti/">Prenota il battesimo gratuito</a>
+        <a class="btn btn-ghost" href="/corsi/">Scopri i corsi</a>
+      </div>
+    </div>
+  </section>
+
+  <Depth depth="-10 m" tone="base">
+    <div class="stack-lg">
+      <h2 class="display h-md">{h.percorso_titolo}</h2>
+      <div class="grid">
+        {(h.percorso ?? []).map((p: any, i: number) => (
+          <div class="card-glass">
+            <span class="step-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{p.titolo}</h3>
+            <p class="soft">{p.testo}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Depth>
+
+  <Depth depth="-18 m" tone="deep">
+    <div class="stack-lg">
+      <h2 class="display h-md">{h.eventi_titolo}</h2>
+      <EventLists limit={3} />
+      <a class="link" href="/eventi/" style="align-self: flex-start">Tutti gli eventi</a>
+    </div>
+  </Depth>
+
+  <Depth depth="-25 m" tone="abyss">
+    <div class="stack-lg">
+      <div class="stack" style="gap: 14px">
+        <h2 class="display h-md">{h.laghi_titolo}</h2>
+        <p class="lead soft">{h.laghi_testo}</p>
+      </div>
+      {primo && (
+        <div class="grid">
+          <a href={`/siti/${primo.id}/`} class="card-glass" style="grid-column: span 2; grid-row: span 2; justify-content: flex-end; min-height: 460px; padding: 0; overflow: hidden; text-decoration: none; color: inherit">
+            <Photo src={primo.data.copertina} alt={primo.data.nome} label="Foto grande del sito" style="flex-grow: 1; min-height: 300px" />
+            <div style="padding: 28px 32px 32px" class="stack">
+              <h3 class="display h-sm" style="font-size: 48px">{primo.data.lago}</h3>
+              <p class="soft">{primo.data.descrizione}</p>
+            </div>
+          </a>
+          {altri.map((s) => (
+            <a href={`/siti/${s.id}/`} class="card-glass" style="text-decoration: none; color: inherit; justify-content: flex-end; min-height: 218px">
+              <p class="tag">{s.data.lago}</p>
+              <h3>{s.data.nome}</h3>
+              <p class="soft">{s.data.descrizione}</p>
+            </a>
+          ))}
+        </div>
+      )}
+      <a class="link" href="/siti/" style="align-self: flex-start">Tutti i siti d'immersione</a>
+    </div>
+  </Depth>
+
+  <Depth depth="-47 m" tone="night">
+    <div class="stack-lg">
+      <h2 class="display h-md">{h.tecnica_titolo}</h2>
+      <div class="depths">
+        {(h.tecnica ?? []).map((t: any) => (
+          <div><strong>{t.quota}</strong><span class="soft">{t.testo}</span></div>
+        ))}
+      </div>
+      <a class="btn btn-ghost" href="/corsi/#tecnici" style="align-self: flex-start">I corsi tecnici CMAS-PTA</a>
+    </div>
+  </Depth>
+
+  <Depth depth="-66 m" tone="night">
+    <div class="stack" style="align-items: center; text-align: center; gap: 28px">
+      <p class="display h-md" style="max-width: 1100px">{h.leggenda_titolo}</p>
+      <p class="lead soft">{h.leggenda_testo}</p>
+      <a class="btn btn-ember" href="/leggenda/">Leggi la leggenda</a>
+    </div>
+  </Depth>
+
+  <section class="cta-band">
+    <h2 class="display h-md">{h.cta_titolo}</h2>
+    <a class="btn btn-dark" href="/contatti/" style="min-height: 64px; padding: 16px 40px; font-size: 20px">{h.cta_bottone}</a>
+  </section>
+</Base>

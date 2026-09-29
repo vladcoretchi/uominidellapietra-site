@@ -45,11 +45,13 @@ const active = (h: string) => (h === '/' ? path === '/' : path.startsWith(h));
   </header>
   <main id="contenuto"><slot /></main>
   <footer class="site-footer">
-    <div>
-      <a href="/" class="footer-logo" aria-label={s.nome}><Logo height={150} /></a>
-      <strong class="brand-name">{s.ragione_sociale}</strong>
-      <span class="soft">{s.sede}</span>
-      <span class="soft">C.F. {s.codice_fiscale}</span>
+    <div class="footer-brand">
+      <a href="/" class="footer-logo" aria-label={s.nome}><Logo height={120} /></a>
+      <div>
+        <strong class="brand-name">{s.ragione_sociale}</strong>
+        <span class="soft">{s.sede}</span>
+        <span class="soft">C.F. {s.codice_fiscale}</span>
+      </div>
     </div>
     <div>
       <strong>Associazione</strong>

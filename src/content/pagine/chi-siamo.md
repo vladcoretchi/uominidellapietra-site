@@ -20,5 +20,6 @@ direttivo:
 ---
 <p>Per i propri Soci, Uomini della Pietra asd organizza attività subacquee a tutti i livelli: dal primo grado fino ai livelli tecnici per il profondismo e l'uso di miscele decompressive.</p>
 <p>Lo staff dei dirigenti è composto da istruttori brevettati CMAS-PTA e SDI-TDI. I nostri istruttori hanno inoltre il Diploma Nazionale ACSI per Attività Subacquee, nel rispetto della <a href="https://www.gazzettaufficiale.it/atto/regioni/caricaDettaglioAtto/originario?atto.dataPubblicazioneGazzetta=2003-05-17&amp;atto.codiceRedazionale=003R0193">Legge Regionale 8 ottobre 2002 n. 26 (comma 5, art. 8)</a>.</p>
+<img class="sasso" src="/uploads/logo/sasso.svg" alt="Il sasso degli Uomini della Pietra" />
 <p>Dal 2016 al 2021 l'associazione è stata affiliata all'ente di promozione sportiva UISP e iscritta al registro del CONI. Dal 2022 è affiliata all'<a href="https://www.acsi.it/">ACSI</a> e iscritta al <a href="https://registro.sportesalute.eu/#/registro">Registro Nazionale delle Attività Sportive Dilettantistiche</a> del Dipartimento per lo Sport.</p>
 <p>Il 20 dicembre 2023 abbiamo aggiornato lo Statuto per adeguarlo al nuovo ordinamento sportivo del D.Lgs. n. 36 del 28 febbraio 2021 e successive modifiche: lo trovi nella pagina <a href="/associazione/">Statuto e safeguarding</a>.</p>

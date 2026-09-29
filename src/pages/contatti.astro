@@ -17,7 +17,10 @@ const p = (await getEntry('pagine', 'contatti'))!.data as any;
         <div class="card-glass" style="gap: 4px"><strong>Sede</strong><span>{s.sede}</span><span class="soft">{[s.email, s.telefono].filter(Boolean).join(' - ')}</span></div>
       </div>
       <form class="form" data-email={s.email} action={`mailto:${s.email}`} method="post" enctype="text/plain">
-        <h2 class="display h-sm" style="color: var(--slate)">Prenota il battesimo</h2>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+          <h2 class="display h-sm" style="color: var(--slate)">Prenota il battesimo</h2>
+          <img src="/uploads/logo/sasso.svg" alt="" width="64" height="64" />
+        </div>
         <label for="f-nome">Nome e cognome</label>
         <input id="f-nome" name="nome" type="text" autocomplete="name" required />
         <label for="f-mail">Email</label>

@@ -175,7 +175,8 @@ a.card:hover { border-color: var(--slate); }
 .site-footer { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; padding: 56px var(--pad); background: var(--slate-night); color: #fff; font-size: 15px; border-top: 1px solid rgba(255,255,255,.08); }
 .site-footer div { display: flex; flex-direction: column; gap: 6px; }
 .site-footer a { text-decoration: none; }
-.footer-logo { margin-bottom: 18px; }
+.site-footer .footer-brand { flex-direction: row; align-items: center; gap: 20px; }
+.footer-logo { flex-shrink: 0; }
 .form textarea { min-height: 110px; padding: 12px 14px; resize: vertical; }
 .site-footer a:hover { text-decoration: underline; }
 @media (max-width: 800px) { .site-footer { grid-template-columns: 1fr; } }

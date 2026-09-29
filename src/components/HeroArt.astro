@@ -1,25 +1,81 @@
 ---
-// Lake cross-section: Resegone skyline, surface, a diver swimming back and forth, stone on the bottom
+// Lake cross-section in layers: sky and Resegone, surface, swimming diver, bed with the stone.
+// Bands are 3840 wide and anchored to fixed heights, so wide screens never crop them vertically.
+const W = 3840;
+const pts = (f: (x: number) => number, step: number) => Array.from({ length: W / step + 1 }, (_, i) => `${i * step} ${f(i * step).toFixed(1)}`).join(' L');
+
+// Ridge: rolling hills with the jagged Resegone in the middle (irregular teeth from a sine hash)
+const rnd = (i: number) => { const v = Math.sin(i * 12.9898) * 43758.5453; return v - Math.floor(v); };
+const ridge = (x: number) => {
+  const i = x / 30;
+  const e = Math.max(0, Math.cos(((x - W / 2) / 900) * (Math.PI / 2))) ** 1.5;
+  const teeth = e * (i % 2 === 0 ? -(8 + 30 * rnd(i)) : 6 * rnd(i));
+  return 205 - 24 * Math.sin(x / 310) - 12 * Math.sin(x / 127 + 1) - e * 105 - e * 20 * Math.sin(x / 90) + teeth;
+};
+const mountains = `M0 240 L${pts(ridge, 30)} L${W} 240 Z`;
+// Surface: a lit back swell behind the front swell, a crest line and scattered glints below
+const swell = (x: number) => 18 + 4.5 * Math.sin(x / 140) + 2.5 * Math.sin(x / 53 + 2) + 1.3 * Math.sin(x / 19);
+const back = (x: number) => 13 + 4 * Math.sin(x / 120 + 1.3) + 2 * Math.sin(x / 47);
+const crest = `M${pts(swell, 10)}`;
+const surfaceBack = `M${pts(back, 10)} L${W} 44 L0 44 Z`;
+const surface = `${crest} L${W} 44 L0 44 Z`;
+const glints = Array.from({ length: W / 70 }, (_, i) => { const x = i * 70 + rnd(i + 7) * 40, y = 26 + rnd(i + 99) * 14, l = 8 + rnd(i + 3) * 20; return `M${x.toFixed(0)} ${y.toFixed(1)} h${l.toFixed(0)}`; }).join(' ');
+const bed = `M0 120 L${pts((x) => 50 + 12 * Math.sin(x / 230) + 6 * Math.sin(x / 71 + 1) + 5 * (rnd(x / 40 + 300) - .5), 40)} L${W} 120 Z`;
 ---
-<svg class="hero-art" viewBox="0 0 1440 820" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-  <rect x="0" y="0" width="1440" height="240" fill="#E9ECEE"></rect>
-  <path d="M0 240 L0 170 L70 150 L130 165 L210 110 L270 140 L330 120 L400 175 L470 160 L540 190 L620 150 L700 95 L730 120 L760 70 L790 110 L820 60 L850 105 L880 55 L910 100 L940 50 L970 95 L1000 58 L1030 100 L1060 72 L1100 120 L1170 140 L1240 115 L1310 150 L1380 135 L1440 160 L1440 240 Z" fill="#262E34"></path>
-  <path d="M0 232 C120 222 240 242 360 232 C480 222 600 242 720 232 C840 222 960 242 1080 232 C1200 222 1320 242 1440 232 L1440 820 L0 820 Z" fill="#37424A"></path>
-  <rect x="0" y="560" width="1440" height="260" fill="#262E34" opacity="0.55"></rect>
-  <path d="M1100 790 C1100 760 1125 748 1152 750 C1182 752 1200 768 1198 790 Z" fill="#111518"></path>
-  <g class="swim" transform="translate(1150 470)">
-    <g class="flip">
+<div class="hero-art" aria-hidden="true">
+  <div class="hero-sky">
+    <svg viewBox={`0 0 ${W} 240`} preserveAspectRatio="xMidYMax slice"><path d={mountains} fill="#262E34"></path></svg>
+  </div>
+  <svg class="hero-surface" viewBox={`0 0 ${W} 44`} preserveAspectRatio="xMidYMin slice">
+    <path d={surfaceBack} fill="#4F5B63"></path>
+    <path d={surface} fill="#37424A"></path>
+    <path d={crest} fill="none" stroke="#8A969E" stroke-width="2" opacity=".55"></path>
+    <path d={glints} stroke="#A9B3B9" stroke-width="1.5" stroke-linecap="round" opacity=".25"></path>
+  </svg>
+  <div class="hero-mooring">
+    <svg class="hero-buoy" viewBox="0 0 100 100">
+      <defs>
+        <clipPath id="buoy-float"><path d="M28 80 C28 68 38 63 50 63 C62 63 72 68 72 80 C72 90 62 95 50 95 C38 95 28 90 28 80 Z"></path></clipPath>
+        <clipPath id="buoy-flag"><path d="M51 11 C60 8 66 14 77 11 V31 C66 34 60 28 51 31 Z"></path></clipPath>
+      </defs>
+      <g class="buoy-bob">
+        <path d="M50 64 V9" stroke="#A9B3B9" stroke-width="2.5" stroke-linecap="round"></path>
+        <circle cx="50" cy="8" r="2.5" fill="#A9B3B9"></circle>
+        <g clip-path="url(#buoy-flag)">
+          <rect x="50" y="6" width="28" height="30" fill="#D7261E"></rect>
+          <path d="M50 9 L78 34" stroke="#F3F1EC" stroke-width="6"></path>
+        </g>
+        <g clip-path="url(#buoy-float)">
+          <rect x="26" y="60" width="48" height="40" fill="#E8702A"></rect>
+          <rect x="26" y="71" width="48" height="5" fill="#F3F1EC"></rect>
+          <path d="M36 70 C40 66 45 65 50 65" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".55"></path>
+          <rect x="26" y="80" width="48" height="20" fill="#37424A" opacity=".6"></rect>
+        </g>
+      </g>
+      <path d="M10 80 Q18 77 26 80 M74 80 Q82 77 90 80" stroke="#8A969E" stroke-width="2" stroke-linecap="round" fill="none"></path>
+    </svg>
+    <span class="hero-chain"></span>
+    <svg class="hero-stone" viewBox="24 26 162 152">
+      <path d="M40 118 C28 72 62 34 108 32 C156 30 182 66 176 108 C170 152 132 176 92 172 C58 168 46 146 40 118 Z" fill="#56636C"></path>
+    </svg>
+  </div>
+  <div class="hero-swim">
+    <svg class="hero-diver" viewBox="-130 -60 240 100">
       <g class="diver">
         <ellipse cx="0" cy="0" rx="70" ry="17" fill="#111518" transform="rotate(-8)"></ellipse>
         <circle cx="72" cy="-14" r="15" fill="#111518"></circle>
         <rect x="-38" y="-32" width="70" height="18" rx="9" fill="#EE4B1F" transform="rotate(-8)"></rect>
         <path d="M-66 14 L-118 0 L-112 30 Z" fill="#111518"></path>
         <path d="M-64 6 L-110 -24 L-116 6 Z" fill="#111518"></path>
-        <circle class="bub" cx="80" cy="-36" r="7" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"></circle>
-        <circle class="bub b2" cx="88" cy="-28" r="4" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"></circle>
-        <circle class="bub b3" cx="74" cy="-32" r="10" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"></circle>
-        <circle class="bub b4" cx="92" cy="-40" r="5" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"></circle>
       </g>
-    </g>
-  </g>
-</svg>
+      <g class="bubbles" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2">
+        <circle class="bub" cx="80" cy="-36" r="7"></circle>
+        <circle class="bub b2" cx="88" cy="-28" r="4"></circle>
+        <circle class="bub b3" cx="74" cy="-32" r="9"></circle>
+        <circle class="bub b4" cx="92" cy="-40" r="5"></circle>
+      </g>
+    </svg>
+  </div>
+  <svg class="hero-bed" viewBox={`0 0 ${W} 120`} preserveAspectRatio="xMidYMax slice"><path d={bed} fill="#111518"></path></svg>
+
+</div>

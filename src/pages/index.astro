@@ -18,10 +18,10 @@ const [primo, ...altri] = siti;
     <span class="depth-mark" aria-hidden="true">0 m</span>
     <div class="hero-content">
       <p class="tag">{h.hero_luogo}</p>
-      <h1 class="display h-xl" set:html={hl(h.hero_titolo)} />
+      <h1 class="display hero-title" set:html={hl(h.hero_titolo)} />
       <p class="lead">{h.hero_testo}</p>
       <div style="display: flex; gap: 16px; flex-wrap: wrap">
-        <a class="btn btn-ember" href="/contatti/">Prenota il battesimo gratuito</a>
+        <a class="btn btn-ember" href="/contatti/">Prenota il battesimo</a>
         <a class="btn btn-ghost" href="/corsi/">Scopri i corsi</a>
       </div>
     </div>

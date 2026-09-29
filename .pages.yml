@@ -32,7 +32,7 @@ content:
             - { value: settimana-blu, label: Settimana blu }
             - { value: cena-sociale, label: Cena sociale }
             - { value: corso, label: Corso }
-            - { value: prova-gratuita, label: Prova gratuita }
+            - { value: prova-gratuita, label: Prova in piscina }
             - { value: assemblea, label: Assemblea }
             - { value: notizia, label: Notizia }
             - { value: ricordo, label: In ricordo }
@@ -233,7 +233,6 @@ content:
       - { name: titolo, label: Titolo, type: string }
       - { name: etichetta, label: Etichetta, type: string }
       - { name: intro, label: Introduzione, type: text }
-      - { name: serate, label: Serate disponibili per il battesimo, type: string, list: true }
 
   - name: impostazioni
     label: Impostazioni generali

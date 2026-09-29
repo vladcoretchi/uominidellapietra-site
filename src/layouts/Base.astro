@@ -3,6 +3,7 @@ import '@fontsource-variable/archivo/wdth.css';
 import '@fontsource-variable/source-sans-3';
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
+import LogoFull from '../components/LogoFull.astro';
 import s from '../data/impostazioni.json';
 interface Props { title?: string; description?: string }
 const { title, description = `${s.nome}: ${s.sottotitolo}. Corsi, uscite ai laghi di Como e Iseo, subacquea tecnica e sottoghiaccio.` } = Astro.props;
@@ -40,12 +41,13 @@ const active = (h: string) => (h === '/' ? path === '/' : path.startsWith(h));
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav id="nav" class="nav" aria-label="Principale">
       {nav.map((n) => <a href={n.href} aria-current={active(n.href) ? 'page' : undefined}>{n.label}</a>)}
-      <a class="btn btn-ember" href="/contatti/">Prova gratuita</a>
+      <a class="btn btn-ember" href="/contatti/">Prova in piscina</a>
     </nav>
   </header>
   <main id="contenuto"><slot /></main>
   <footer class="site-footer">
     <div>
+      <a href="/" class="footer-logo" aria-label={s.nome}><LogoFull /></a>
       <strong class="brand-name">{s.ragione_sociale}</strong>
       <span class="soft">{s.sede}</span>
       <span class="soft">C.F. {s.codice_fiscale}</span>

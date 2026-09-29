@@ -1,7 +1,11 @@
 ---
-const { size = 44 } = Astro.props;
+// "Sasso e onda" symbol: light stone for dark backgrounds, slate stone for light ones
+interface Props { size?: number; tone?: 'dark' | 'light' }
+const { size = 44, tone = 'dark' } = Astro.props;
+const stone = tone === 'dark' ? '#F3F1EC' : '#2F3A44';
 ---
-<svg width={size} height={size} viewBox="0 0 44 44" fill="none" aria-hidden="true">
-  <path d="M6 28 C6 16 14 8 24 9 C34 10 39 18 38 27 C37 35 29 38 21 37 C12 36 6 34 6 28 Z" fill="#37424A" stroke="#56636C" stroke-width="1"></path>
-  <path d="M11 25 C15 22 18 28 22 25 C26 22 29 28 33 25" stroke="#EE4B1F" stroke-width="2.5" stroke-linecap="round"></path>
+<svg width={size} height={size} viewBox="0 0 200 200" fill="none" aria-hidden="true">
+  <path d="M40 118 C28 72 62 34 108 32 C156 30 182 66 176 108 C170 152 132 176 92 172 C58 168 46 146 40 118 Z" fill={stone}></path>
+  <path d="M12 116 C32 102 52 102 72 116 S112 130 132 116 S172 102 190 114" stroke="#E8702A" stroke-width="9" stroke-linecap="round"></path>
+  <path d="M66 144 C80 134 94 134 108 144 S136 154 148 144" stroke="#E8702A" stroke-width="7" stroke-linecap="round"></path>
 </svg>

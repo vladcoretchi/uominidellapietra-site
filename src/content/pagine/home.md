@@ -5,7 +5,7 @@ hero_testo: Scuola subacquea CMAS-PTA di Bergamo. Dalla prima bolla in piscina a
 percorso_titolo: Il tuo percorso
 percorso:
   - titolo: Inizia
-    testo: "Battesimo gratuito in piscina a Dalmine: respira sott'acqua per la prima volta, con un istruttore accanto."
+    testo: "Battesimo in piscina a Dalmine: respira sott'acqua per la prima volta, con un istruttore accanto."
   - titolo: Cresci
     testo: "Corsi ricreativi CMAS-PTA: teoria in aula, piscina e immersioni vere nei nostri laghi."
   - titolo: Vai a fondo
@@ -25,6 +25,6 @@ tecnica:
     testo: metri in trimix normossico
 leggenda_titolo: Gli altri cercavano la scintilla del fuoco. Noi quella della curiosità.
 leggenda_testo: Molto prima del fuoco, sul ramo di Lecco del lago di Como, cinque sconsiderati scoprirono che con una *pietra* in mano si arrivava fino al fondo.
-cta_titolo: La prima bolla è gratis.
+cta_titolo: La prima bolla è speciale.
 cta_bottone: Prenota il battesimo
 ---

@@ -20,7 +20,7 @@ const { Content } = await render(entry);
         <div class="prose"><Content /></div>
         {p.citazione && <p class="display" style="font-size: clamp(28px, 3vw, 40px); line-height: 1.1; font-stretch: 70%; text-transform: none; letter-spacing: 0; color: var(--slate)">{p.citazione}</p>}
       </div>
-      <Photo src={p.illustrazione} alt="Illustrazione della leggenda" label="Illustrazione in arrivo" style="border-radius: var(--radius); min-height: 360px; background: var(--mist); color: var(--slate-deep)" />
+      <Photo src={p.illustrazione} alt="Illustrazione della leggenda" label="Illustrazione in arrivo" style="border-radius: var(--radius); min-height: 360px; background: var(--mist); color: var(--slate-deep); align-self: start; object-fit: contain; padding: 0" />
     </div>
   </section>
 </Base>

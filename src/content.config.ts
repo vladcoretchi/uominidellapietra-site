@@ -16,7 +16,7 @@ export const TIPI_EVENTO = {
   'settimana-blu': 'Settimana blu',
   'cena-sociale': 'Cena sociale',
   corso: 'Corso',
-  'prova-gratuita': 'Prova gratuita',
+  'prova-gratuita': 'Prova in piscina',
   assemblea: 'Assemblea',
   notizia: 'Notizia',
   ricordo: 'In ricordo',

@@ -29,6 +29,10 @@ In home compaiono in automatico i prossimi eventi e gli ultimi passati. La divis
 
 I siti d'immersione non sono nel menu: si raggiungono dalla home (quelli con "Mostra in home") e dal footer.
 
+Il logo "Sasso e onda" è in `src/components/Logo.astro` (e come icona in `public/favicon.svg`). L'illustrazione del hero della home è disegnata a livelli in `src/components/HeroArt.astro`; quella della leggenda è in `public/uploads/leggenda/leggenda.svg`.
+
+Nei testi si evita "gratuito": il battesimo si presenta come esperienza speciale, non come offerta.
+
 I caratteri (Archivo e Source Sans 3) sono ospitati sul sito tramite Fontsource, senza richieste a Google Fonts.
 
 ## Sviluppo

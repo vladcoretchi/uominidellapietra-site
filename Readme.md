@@ -29,7 +29,7 @@ In home compaiono in automatico i prossimi eventi e gli ultimi passati. La divis
 
 I siti d'immersione non sono nel menu: si raggiungono dalla home (quelli con "Mostra in home") e dal footer.
 
-Il logo è lo scudo storico UDP: `public/uploads/logo/udp-logo.svg` (originale, anche come icona) e `udp-logo-chiaro.svg` (versione chiara per header e footer), usati tramite `src/components/Logo.astro`. I colori del sito (grigio e rosso) derivano dallo scudo. La variante moderna con logo "Sasso e onda" e palette ardesia/arancione è sul branch `design/moderno`. L'illustrazione del hero della home è disegnata a livelli in `src/components/HeroArt.astro`; quella della leggenda è in `public/uploads/leggenda/leggenda.svg`.
+Il logo è lo scudo storico UDP: `public/uploads/logo/udp-logo.svg` (originale, anche come icona) e `udp-logo-chiaro.svg` (versione chiara per header e footer), usati tramite `src/components/Logo.astro`; la favicon resta il sasso "Sasso e onda" nei colori dello scudo. I colori del sito (grigio e rosso) derivano dallo scudo. La variante moderna con logo "Sasso e onda" e palette ardesia/arancione è sul branch `design/moderno`. L'illustrazione del hero della home è disegnata a livelli in `src/components/HeroArt.astro`; quella della leggenda è in `public/uploads/leggenda/leggenda.svg`.
 
 Nei testi si evita "gratuito": il battesimo si presenta come esperienza speciale, non come offerta.
 

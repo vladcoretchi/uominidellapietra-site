@@ -24,11 +24,11 @@ const bed = `M0 120 L${pts((x) => 50 + 12 * Math.sin(x / 230) + 6 * Math.sin(x /
 ---
 <div class="hero-art" aria-hidden="true">
   <div class="hero-sky">
-    <svg viewBox={`0 0 ${W} 240`} preserveAspectRatio="xMidYMax slice"><path d={mountains} fill="#2C2829"></path></svg>
+    <svg viewBox={`0 0 ${W} 240`} preserveAspectRatio="xMidYMax slice"><path d={mountains} fill="#221F20"></path></svg>
   </div>
   <svg class="hero-surface" viewBox={`0 0 ${W} 44`} preserveAspectRatio="xMidYMin slice">
-    <path d={surfaceBack} fill="#575152"></path>
-    <path d={surface} fill="#3A3637"></path>
+    <path d={surfaceBack} fill="#443F40"></path>
+    <path d={surface} fill="#2A2627"></path>
     <path d={crest} fill="none" stroke="#958E8F" stroke-width="2" opacity=".55"></path>
     <path d={glints} stroke="#B1ABAB" stroke-width="1.5" stroke-linecap="round" opacity=".25"></path>
   </svg>
@@ -49,7 +49,7 @@ const bed = `M0 120 L${pts((x) => 50 + 12 * Math.sin(x / 230) + 6 * Math.sin(x /
           <rect x="26" y="60" width="48" height="40" fill="#E42630"></rect>
           <rect x="26" y="71" width="48" height="5" fill="#F3F1EC"></rect>
           <path d="M36 70 C40 66 45 65 50 65" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".55"></path>
-          <rect x="26" y="80" width="48" height="20" fill="#3A3637" opacity=".6"></rect>
+          <rect x="26" y="80" width="48" height="20" fill="#2A2627" opacity=".6"></rect>
         </g>
       </g>
       <path d="M10 80 Q18 77 26 80 M74 80 Q82 77 90 80" stroke="#958E8F" stroke-width="2" stroke-linecap="round" fill="none"></path>
@@ -62,11 +62,11 @@ const bed = `M0 120 L${pts((x) => 50 + 12 * Math.sin(x / 230) + 6 * Math.sin(x /
   <div class="hero-swim">
     <svg class="hero-diver" viewBox="-130 -60 240 100">
       <g class="diver">
-        <ellipse cx="0" cy="0" rx="70" ry="17" fill="#171516" transform="rotate(-8)"></ellipse>
-        <circle cx="72" cy="-14" r="15" fill="#171516"></circle>
+        <ellipse cx="0" cy="0" rx="70" ry="17" fill="#121011" transform="rotate(-8)"></ellipse>
+        <circle cx="72" cy="-14" r="15" fill="#121011"></circle>
         <rect x="-38" y="-32" width="70" height="18" rx="9" fill="#E42630" transform="rotate(-8)"></rect>
-        <path d="M-66 14 L-118 0 L-112 30 Z" fill="#171516"></path>
-        <path d="M-64 6 L-110 -24 L-116 6 Z" fill="#171516"></path>
+        <path d="M-66 14 L-118 0 L-112 30 Z" fill="#121011"></path>
+        <path d="M-64 6 L-110 -24 L-116 6 Z" fill="#121011"></path>
       </g>
       <g class="bubbles" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2">
         <circle class="bub" cx="80" cy="-36" r="7"></circle>
@@ -76,6 +76,6 @@ const bed = `M0 120 L${pts((x) => 50 + 12 * Math.sin(x / 230) + 6 * Math.sin(x /
       </g>
     </svg>
   </div>
-  <svg class="hero-bed" viewBox={`0 0 ${W} 120`} preserveAspectRatio="xMidYMax slice"><path d={bed} fill="#171516"></path></svg>
+  <svg class="hero-bed" viewBox={`0 0 ${W} 120`} preserveAspectRatio="xMidYMax slice"><path d={bed} fill="#121011"></path></svg>
 
 </div>

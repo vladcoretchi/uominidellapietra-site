@@ -18,7 +18,7 @@ const { Content } = await render(sito);
     <div class="grid" style="--cols: 3; gap: 48px">
       <div class="stack" style="grid-column: span 2">
         <Photo src={d.copertina} alt={d.nome} style="border-radius: var(--radius); min-height: 320px; max-height: 520px" />
-        <div class="prose"><Content /></div>
+        <div class="prose prose-end"><Content /></div>
       </div>
       <aside class="card" style="align-self: start">
         <div class="card-body">

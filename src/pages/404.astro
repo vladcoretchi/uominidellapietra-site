@@ -3,7 +3,9 @@ import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 ---
 <Base title="Pagina non trovata">
-  <PageHead depth="404 m" tone="night" tag="Troppo in fondo" title="Qui non c'è niente" intro="La pagina che cerchi non esiste o è stata spostata. Risali con calma.">
+  <PageHead depth="404 m" tone="night" tag="Troppo in fondo" title="Qui si tocca il fondo" intro="Ma la pagina che cerchi non c'è, o è stata spostata. Risali con calma.">
+    <div class="fondale" aria-hidden="true"></div>
+    <img class="sasso-fondo" src="/uploads/logo/sasso-chiaro.svg" alt="" aria-hidden="true" />
     <a class="btn btn-ember" href="/" style="align-self: flex-start">Torna alla home</a>
   </PageHead>
 </Base>

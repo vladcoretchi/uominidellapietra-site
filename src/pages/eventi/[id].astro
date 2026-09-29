@@ -22,7 +22,7 @@ const hasBody = Boolean(evento.body?.trim());
     <div class="grid" style="--cols: 3; gap: 48px">
       <div class="stack" style="grid-column: span 2">
         {d.copertina && <Photo src={d.copertina} alt={d.titolo} style="border-radius: var(--radius); max-height: 520px" />}
-        {hasBody ? <div class="prose"><Content /></div> : <p class="muted">Il resoconto arriverà dopo l'evento.</p>}
+        {hasBody ? <div class="prose prose-end"><Content /></div> : <p class="muted">Il resoconto arriverà dopo l'evento.</p>}
       </div>
       <aside class="card" style="align-self: start">
         <div class="card-body">

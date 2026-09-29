@@ -1,16 +1,16 @@
-/* Theme tokens: ardesia (stone) + ember orange */
+/* Theme tokens: grey and red from the historic UDP shield */
 :root {
-  --slate: #37424A;
-  --slate-deep: #262E34;
-  --slate-abyss: #1B2126;
-  --slate-night: #111518;
-  --mist: #E9ECEE;
-  --paper: #F3F4F2;
-  --ink: #1A1F22;
-  --muted: #565E63;
-  --line: #D9DDDF;
-  --ember: #EE4B1F;
-  --on-ember: #1A0803;
+  --slate: #3A3637;
+  --slate-deep: #2C2829;
+  --slate-abyss: #221F20;
+  --slate-night: #171516;
+  --mist: #ECEAEA;
+  --paper: #F4F3F2;
+  --ink: #1E1B1C;
+  --muted: #5F5A5A;
+  --line: #DEDADA;
+  --ember: #E42630;
+  --on-ember: #FFFFFF;
   --display: 'Archivo Variable', 'Arial Narrow', sans-serif;
   --body: 'Source Sans 3 Variable', 'Segoe UI', system-ui, sans-serif;
   --pad: clamp(20px, 4vw, 48px);
@@ -183,7 +183,7 @@ a.card:hover { border-color: var(--slate); }
 /* Forms */
 .form { display: flex; flex-direction: column; gap: 14px; padding: 40px; background: #fff; color: var(--ink); border-radius: 24px; }
 .form label { font-weight: 600; }
-.form input, .form select, .form textarea { min-height: 48px; padding: 8px 14px; border: 1px solid #A9AFB3; border-radius: 12px; font: inherit; background: #fff; }
+.form input, .form select, .form textarea { min-height: 48px; padding: 8px 14px; border: 1px solid #AFA9A9; border-radius: 12px; font: inherit; background: #fff; }
 .form .check { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: 15px; color: var(--muted); }
 .form .check input { min-height: 0; width: 20px; height: 20px; margin-top: 3px; }
 
@@ -205,3 +205,6 @@ a.card:hover { border-color: var(--slate); }
 .doc { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 24px; background: #fff; border: 1px solid var(--line); border-radius: 16px; text-decoration: none; font-weight: 600; }
 .doc:hover { border-color: var(--slate); }
 .doc span:last-child { color: var(--ember); white-space: nowrap; }
+.crest { display: flex; align-items: center; gap: 28px; padding: 28px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
+.crest img { flex-shrink: 0; }
+@media (max-width: 500px) { .crest { flex-direction: column; align-items: flex-start; } }

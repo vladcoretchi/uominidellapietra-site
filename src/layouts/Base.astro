@@ -3,7 +3,6 @@ import '@fontsource-variable/archivo/wdth.css';
 import '@fontsource-variable/source-sans-3';
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
-import LogoFull from '../components/LogoFull.astro';
 import s from '../data/impostazioni.json';
 interface Props { title?: string; description?: string }
 const { title, description = `${s.nome}: ${s.sottotitolo}. Corsi, uscite ai laghi di Como e Iseo, subacquea tecnica e sottoghiaccio.` } = Astro.props;
@@ -28,7 +27,7 @@ const active = (h: string) => (h === '/' ? path === '/' : path.startsWith(h));
   <meta name="description" content={description} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
-  <meta name="theme-color" content="#111518" />
+  <meta name="theme-color" content="#171516" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
@@ -47,7 +46,7 @@ const active = (h: string) => (h === '/' ? path === '/' : path.startsWith(h));
   <main id="contenuto"><slot /></main>
   <footer class="site-footer">
     <div>
-      <a href="/" class="footer-logo" aria-label={s.nome}><LogoFull /></a>
+      <a href="/" class="footer-logo" aria-label={s.nome}><Logo height={150} /></a>
       <strong class="brand-name">{s.ragione_sociale}</strong>
       <span class="soft">{s.sede}</span>
       <span class="soft">C.F. {s.codice_fiscale}</span>

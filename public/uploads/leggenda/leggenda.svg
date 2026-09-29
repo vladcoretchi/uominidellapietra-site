@@ -1,31 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" role="img" aria-label="La leggenda degli Uomini della Pietra: Gigi sulla riva passa il sasso, Simù scende con la prima zavorra, Omar tra i pesci, Sever e Vava in coppia lungo la liana, un tuffo sotto il ghiaccio">
   <defs>
     <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#37424A"/>
-      <stop offset="1" stop-color="#111518"/>
+      <stop offset="0" stop-color="#3A3637"/>
+      <stop offset="1" stop-color="#171516"/>
     </linearGradient>
     <path id="stone" d="M40 118 C28 72 62 34 108 32 C156 30 182 66 176 108 C170 152 132 176 92 172 C58 168 46 146 40 118 Z"/>
   </defs>
 
   <!-- Sky, Resegone, winter flakes -->
-  <rect width="600" height="240" fill="#E9ECEE"/>
-  <path d="M170 232 L200 190 L230 200 L260 150 L280 170 L300 130 L315 150 L330 115 L345 140 L360 105 L375 135 L390 100 L405 130 L420 110 L440 140 L470 150 L510 175 L560 168 L600 182 L600 232 Z" fill="#56636C"/>
+  <rect width="600" height="240" fill="#ECEAEA"/>
+  <path d="M170 232 L200 190 L230 200 L260 150 L280 170 L300 130 L315 150 L330 115 L345 140 L360 105 L375 135 L390 100 L405 130 L420 110 L440 140 L470 150 L510 175 L560 168 L600 182 L600 232 Z" fill="#635D5E"/>
   <g fill="#FFFFFF" opacity=".9">
     <circle cx="470" cy="60" r="3"/><circle cx="520" cy="92" r="2.5"/><circle cx="560" cy="48" r="3"/><circle cx="500" cy="130" r="2"/><circle cx="578" cy="120" r="2.5"/>
   </g>
 
   <!-- Water -->
   <rect y="232" width="600" height="668" fill="url(#water)"/>
-  <path d="M0 234 C40 228 80 240 120 234 S200 228 240 234 S320 240 360 234" fill="none" stroke="#8A969E" stroke-width="2" opacity=".6"/>
+  <path d="M0 234 C40 228 80 240 120 234 S200 228 240 234 S320 240 360 234" fill="none" stroke="#958E8F" stroke-width="2" opacity=".6"/>
 
   <!-- Ice sheet with the hole -->
   <path d="M360 226 H470 V240 H360 Z M515 226 H600 V240 H515 Z" fill="#F3F1EC"/>
-  <path d="M360 240 H470 M515 240 H600" stroke="#C9D2D7" stroke-width="3"/>
+  <path d="M360 240 H470 M515 240 H600" stroke="#D3CFCF" stroke-width="3"/>
 
   <!-- Shore and tree -->
-  <path d="M0 150 C60 150 120 190 180 234 L0 234 Z" fill="#262E34"/>
-  <path d="M55 156 L55 80 M55 110 L100 96" stroke="#262E34" stroke-width="10" stroke-linecap="round"/>
-  <g fill="#262E34"><circle cx="42" cy="72" r="28"/><circle cx="72" cy="58" r="26"/><circle cx="96" cy="84" r="20"/></g>
+  <path d="M0 150 C60 150 120 190 180 234 L0 234 Z" fill="#2C2829"/>
+  <path d="M55 156 L55 80 M55 110 L100 96" stroke="#2C2829" stroke-width="10" stroke-linecap="round"/>
+  <g fill="#2C2829"><circle cx="42" cy="72" r="28"/><circle cx="72" cy="58" r="26"/><circle cx="96" cy="84" r="20"/></g>
 
   <!-- Sever's liana, from the branch to the depths -->
   <path d="M100 98 C150 150 162 220 152 300 S112 560 131 649" fill="none" stroke="#A7B39A" stroke-width="4" stroke-linecap="round"/>
@@ -33,17 +33,17 @@
   <!-- Figures -->
   <g fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
     <!-- Gigi on the shore, handing over the stone -->
-    <g transform="translate(132 172)" stroke="#1B2126">
-      <circle cx="0" cy="-34" r="9" fill="#1B2126" stroke="none"/>
+    <g transform="translate(132 172)" stroke="#221F20">
+      <circle cx="0" cy="-34" r="9" fill="#221F20" stroke="none"/>
       <path d="M0 -24 L0 6 M0 6 L-8 32 M0 6 L8 32 M0 -18 L-12 0 M0 -18 L20 -4"/>
-      <use href="#stone" transform="translate(16 -14) scale(.13)" fill="#E8702A" stroke="none"/>
+      <use href="#stone" transform="translate(16 -14) scale(.13)" fill="#E42630" stroke="none"/>
     </g>
 
     <!-- Simù heading for the bottom, stone held to the chest -->
     <g transform="translate(292 452) rotate(165)" stroke="#F3F1EC">
       <circle cx="0" cy="-34" r="9" fill="#F3F1EC" stroke="none"/>
       <path d="M0 -24 L0 6 M0 6 L-10 32 M0 6 L6 34 M0 -18 L14 -12 M0 -12 L14 -6"/>
-      <use href="#stone" transform="translate(6 -26) scale(.17)" fill="#E8702A" stroke="none"/>
+      <use href="#stone" transform="translate(6 -26) scale(.17)" fill="#E42630" stroke="none"/>
     </g>
 
     <!-- Omar swimming among the silver fish -->
@@ -70,7 +70,7 @@
   </g>
 
   <!-- Silver fish -->
-  <g fill="#CFD6DA">
+  <g fill="#D6D2D2">
     <path d="M492 440 q14 -9 26 0 q-12 9 -26 0 Z M518 440 l9 -6 v12 Z"/>
     <path d="M512 482 q12 -8 22 0 q-10 8 -22 0 Z M534 482 l8 -5 v10 Z"/>
     <path d="M500 520 q-12 -8 -22 0 q10 8 22 0 Z M478 520 l-8 -5 v10 Z"/>
@@ -84,13 +84,13 @@
   </g>
 
   <!-- Lake bed -->
-  <path d="M0 830 C80 812 160 840 250 824 S420 812 600 832 V900 H0 Z" fill="#0B0E10"/>
-  <use href="#stone" transform="translate(360 790) scale(.36 .24)" fill="#1B2126"/>
-  <use href="#stone" transform="translate(70 812) scale(.2 .14)" fill="#1B2126"/>
+  <path d="M0 830 C80 812 160 840 250 824 S420 812 600 832 V900 H0 Z" fill="#0F0E0E"/>
+  <use href="#stone" transform="translate(360 790) scale(.36 .24)" fill="#221F20"/>
+  <use href="#stone" transform="translate(70 812) scale(.2 .14)" fill="#221F20"/>
 
   <!-- Labels -->
   <g font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-weight="800" font-size="17" letter-spacing="1">
-    <text x="150" y="40" fill="#262E34">GIGI E IL SUO SASSO</text>
+    <text x="150" y="40" fill="#2C2829">GIGI E IL SUO SASSO</text>
     <text x="176" y="360" fill="#F3F1EC">LA LIANA DI SEVER</text>
     <text x="455" y="300" fill="#F3F1EC" text-anchor="end">SOTTO IL GHIACCIO</text>
     <text x="150" y="540" fill="#F3F1EC">SIMÙ E LA PRIMA ZAVORRA</text>

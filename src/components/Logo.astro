@@ -1,11 +1,7 @@
 ---
-// "Sasso e onda" symbol: light stone for dark backgrounds, slate stone for light ones
-interface Props { size?: number; tone?: 'dark' | 'light' }
-const { size = 44, tone = 'dark' } = Astro.props;
-const stone = tone === 'dark' ? '#F3F1EC' : '#2F3A44';
+// Historic UDP shield: light version for dark backgrounds, original for light ones
+interface Props { height?: number; tone?: 'dark' | 'light'; class?: string }
+const { height = 52, tone = 'dark', class: cls } = Astro.props;
+const src = tone === 'dark' ? '/uploads/logo/udp-logo-chiaro.svg' : '/uploads/logo/udp-logo.svg';
 ---
-<svg width={size} height={size} viewBox="0 0 200 200" fill="none" aria-hidden="true">
-  <path d="M40 118 C28 72 62 34 108 32 C156 30 182 66 176 108 C170 152 132 176 92 172 C58 168 46 146 40 118 Z" fill={stone}></path>
-  <path d="M12 116 C32 102 52 102 72 116 S112 130 132 116 S172 102 190 114" stroke="#E8702A" stroke-width="9" stroke-linecap="round"></path>
-  <path d="M66 144 C80 134 94 134 108 144 S136 154 148 144" stroke="#E8702A" stroke-width="7" stroke-linecap="round"></path>
-</svg>
+<img src={src} alt="" width={Math.round(height * 591 / 654)} height={height} class={cls} />

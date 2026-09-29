@@ -29,6 +29,13 @@ const active = (h: string) => (h === '/' ? path === '/' : path.startsWith(h));
   <meta property="og:description" content={description} />
   <meta name="theme-color" content="#121011" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <script is:inline>
+    // Broken images (404) fall back to the pebble placeholder
+    addEventListener('error', (e) => {
+      const t = e.target;
+      if (t instanceof HTMLImageElement && !t.dataset.missing) { t.dataset.missing = '1'; t.src = '/uploads/logo/sasso-placeholder.svg'; t.classList.add('photo-missing'); }
+    }, true);
+  </script>
 </head>
 <body>
   <a class="sr-only" href="#contenuto">Vai al contenuto</a>

@@ -94,6 +94,9 @@ a.card:hover { border-color: var(--slate); }
 
 /* Photo placeholders */
 .photo { background: var(--slate); color: rgba(255,255,255,.75); display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; min-height: 200px; object-fit: cover; width: 100%; }
+div.photo { flex-direction: column; gap: 14px; }
+div.photo::before { content: ""; width: min(110px, 40%); aspect-ratio: 1; background: url(/uploads/logo/sasso-placeholder.svg) center / contain no-repeat; }
+img.photo-missing { object-fit: contain; padding: clamp(24px, 18%, 110px); background: var(--slate); }
 .photo-dashed { border: 2px dashed rgba(255,255,255,.3); border-radius: var(--radius); }
 
 /* Hero: fills the viewport, text centred in the water between surface and bed */

@@ -19,18 +19,6 @@ const { Content } = await render(entry);
       <div style="grid-column: span 2" class="stack">
         <div class="prose"><Content /></div>
         {p.citazione && <p class="display" style="font-size: clamp(28px, 3vw, 40px); line-height: 1.1; font-stretch: 70%; text-transform: none; letter-spacing: 0; color: var(--slate)">{p.citazione}</p>}
-        <div class="crest">
-          <svg width="120" height="120" viewBox="0 0 200 200" aria-hidden="true" style="flex-shrink: 0">
-            <rect width="200" height="200" rx="44" fill="#221F20"></rect>
-            <path d="M40 118 C28 72 62 34 108 32 C156 30 182 66 176 108 C170 152 132 176 92 172 C58 168 46 146 40 118 Z" fill="#F4F3F2"></path>
-            <path d="M12 116 C32 102 52 102 72 116 S112 130 132 116 S172 102 190 114" fill="none" stroke="#E42630" stroke-width="11" stroke-linecap="round"></path>
-            <path d="M66 144 C80 134 94 134 108 144 S136 154 148 144" fill="none" stroke="#E42630" stroke-width="9" stroke-linecap="round"></path>
-          </svg>
-          <div class="stack" style="gap: 6px">
-            <h2 class="display h-sm" style="color: var(--slate)">Il sasso di Gigi</h2>
-            <p class="muted" style="margin: 0">Il nostro simbolo è quel sasso: la pietra che portò Simù fino al fondo, attraversata dalle onde del lago. La trovi sul fondale in home e in ogni scheda del browser.</p>
-          </div>
-        </div>
       </div>
       <Photo src={p.illustrazione} alt="Illustrazione della leggenda" label="Illustrazione in arrivo" style="border-radius: var(--radius); min-height: 360px; background: var(--mist); color: var(--slate-deep); align-self: start; object-fit: contain; padding: 0" />
     </div>

@@ -14,16 +14,22 @@ Ogni salvataggio da Pages CMS crea un commit su GitHub; Cloudflare ricostruisce 
 
 | Cosa | Dove | Nel CMS |
 | --- | --- | --- |
-| Eventi (uscite, vacanze, settimana blu, cene...) | `src/content/eventi` | Eventi |
+| Eventi (uscite, vacanze, cene, assemblee, notizie...) | `src/content/eventi` | Eventi |
 | Siti d'immersione | `src/content/siti` | Siti d'immersione |
 | Corsi | `src/content/corsi` | Corsi |
-| Testi delle pagine | `src/content/pagine` | Pagina: ... |
+| Testi delle pagine (home, chi siamo, statuto e safeguarding, privacy...) | `src/content/pagine` | Pagina: ... |
 | Dati generali, contatti, social | `src/data/impostazioni.json` | Impostazioni generali |
 | Foto e documenti | `public/uploads` | Media |
+
+I contenuti storici (news, archivio, corsi, chi siamo, statuto, safeguarding) sono stati importati dal vecchio sito Joomla: le foto sono in `public/uploads/archivio`, i PDF in `public/uploads/documenti`.
+
+Nei campi indicati dal CMS, una parola tra asterischi (`*pietra*`) viene mostrata in arancione.
 
 In home compaiono in automatico i prossimi eventi e gli ultimi passati. La divisione viene ricalcolata anche nel browser in base alla data del visitatore, quindi un evento concluso passa tra i passati senza bisogno di ripubblicare. Un evento con **Bozza** attiva non viene pubblicato.
 
 I siti d'immersione non sono nel menu: si raggiungono dalla home (quelli con "Mostra in home") e dal footer.
+
+I caratteri (Archivo e Source Sans 3) sono ospitati sul sito tramite Fontsource, senza richieste a Google Fonts.
 
 ## Sviluppo
 

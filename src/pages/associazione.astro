@@ -1,0 +1,30 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+
+const p = (await getEntry('pagine', 'associazione'))!.data as any;
+---
+<Base title={p.titolo} description={p.intro}>
+  <PageHead depth="-5 m" tone="deep" tag={p.etichetta} title={p.titolo} intro={p.intro} />
+  <section class="paper">
+    <div class="grid" style="--cols: 2; gap: 48px; align-items: start">
+      <div class="stack">
+        <h2 class="display h-sm" style="color: var(--slate)">Documenti</h2>
+        <div class="docs">
+          {(p.documenti ?? []).filter((d: any) => d.file).map((d: any) => <a class="doc" href={d.file}><span>{d.titolo}</span><span>Scarica PDF</span></a>)}
+        </div>
+      </div>
+      <div class="card" style="align-self: start">
+        <div class="card-body">
+          <h2 class="display h-sm" style="color: var(--slate)">Safeguarding</h2>
+          {p.safeguarding_testo && <p class="muted">{p.safeguarding_testo}</p>}
+          {p.safeguarding_nome && <p><strong>Responsabile:</strong> {p.safeguarding_nome}</p>}
+          {p.safeguarding_telefono && <p><strong>Telefono:</strong> <a href={`tel:${p.safeguarding_telefono.replace(/\s/g, '')}`}>{p.safeguarding_telefono}</a></p>}
+          {p.safeguarding_email && <p><strong>Email:</strong> <a href={`mailto:${p.safeguarding_email}`}>{p.safeguarding_email}</a></p>}
+          {p.canale_segnalazioni && <a class="btn btn-ember" href={p.canale_segnalazioni} style="margin-top: 8px; align-self: flex-start">Canale ACSI per le segnalazioni</a>}
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

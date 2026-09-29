@@ -1,0 +1,30 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Photo from '../components/Photo.astro';
+
+const entry = (await getEntry('pagine', 'chi-siamo'))!;
+const p = entry.data as any;
+const { Content } = await render(entry);
+---
+<Base title={p.titolo} description={p.intro}>
+  <PageHead depth="-5 m" tone="base" tag={p.etichetta} title={p.titolo} intro={p.intro} />
+  <section class="paper stack-lg">
+    <div class="grid" style="--cols: 2; gap: 48px; align-items: start">
+      <div class="prose"><Content /></div>
+      <div class="stack">
+        <Photo src={p.foto} alt="Gli Uomini della Pietra con lo striscione del gruppo" style="border-radius: var(--radius); min-height: 300px" />
+        <a class="link" href="/leggenda/" style="align-self: flex-start">E perché ci chiamiamo così? Leggi la leggenda</a>
+      </div>
+    </div>
+    {(p.direttivo ?? []).length > 0 && (
+      <div class="stack">
+        <h2 class="display h-sm" style="color: var(--slate)">{p.titolo_direttivo}</h2>
+        <div class="people">
+          {p.direttivo.map((d: any) => <div class="person"><strong>{d.nome}</strong><span>{d.ruolo}</span></div>)}
+        </div>
+      </div>
+    )}
+  </section>
+</Base>

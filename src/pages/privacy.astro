@@ -1,0 +1,13 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+
+const entry = (await getEntry('pagine', 'privacy'))!;
+const p = entry.data as any;
+const { Content } = await render(entry);
+---
+<Base title={p.titolo}>
+  <PageHead depth="0 m" tone="night" tag={p.etichetta} title={p.titolo} />
+  <section class="paper"><div class="prose"><Content /></div></section>
+</Base>

@@ -16,6 +16,10 @@ export const TIPI_EVENTO = {
   'settimana-blu': 'Settimana blu',
   'cena-sociale': 'Cena sociale',
   corso: 'Corso',
+  'prova-gratuita': 'Prova gratuita',
+  assemblea: 'Assemblea',
+  notizia: 'Notizia',
+  ricordo: 'In ricordo',
   altro: 'Altro',
 } as const;
 
@@ -62,6 +66,7 @@ const corsi = defineCollection({
     prerequisiti: text,
     durata: text,
     prezzo: text,
+    immagine: text,
     ordine: z.preprocess(empty, z.coerce.number().default(100)),
   }),
 });

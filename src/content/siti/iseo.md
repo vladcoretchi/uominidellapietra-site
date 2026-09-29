@@ -10,4 +10,4 @@ galleria: []
 in_evidenza: true
 ordine: 20
 ---
-[Descrizione del sito.]
+<p>[Descrizione del sito.]</p>

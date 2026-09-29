@@ -32,6 +32,10 @@ content:
             - { value: settimana-blu, label: Settimana blu }
             - { value: cena-sociale, label: Cena sociale }
             - { value: corso, label: Corso }
+            - { value: prova-gratuita, label: Prova gratuita }
+            - { value: assemblea, label: Assemblea }
+            - { value: notizia, label: Notizia }
+            - { value: ricordo, label: In ricordo }
             - { value: altro, label: Altro }
       - { name: data_inizio, label: Data (o primo giorno), type: date, required: true }
       - { name: data_fine, label: Ultimo giorno (solo per eventi di più giorni), type: date }
@@ -86,8 +90,9 @@ content:
           values:
             - { value: ricreativo, label: Ricreativo }
             - { value: tecnico, label: Tecnico }
-      - { name: etichetta, label: Etichetta (es. Livello 1), type: string }
-      - { name: quota, label: Profondità massima (m, solo tecnici), type: number }
+      - { name: etichetta, label: Etichetta (es. P1), type: string }
+      - { name: quota, label: Profondità massima (m), type: number }
+      - { name: immagine, label: Immagine, type: image }
       - { name: prerequisiti, label: Prerequisiti, type: string }
       - { name: durata, label: Durata, type: string }
       - { name: prezzo, label: Prezzo, type: string }
@@ -139,6 +144,55 @@ content:
       - { name: illustrazione, label: Illustrazione, type: image }
       - { name: body, label: Racconto, type: rich-text }
 
+  - name: chi-siamo
+    label: "Pagina: Chi siamo"
+    type: file
+    path: src/content/pagine/chi-siamo.md
+    fields:
+      - { name: titolo, label: Titolo, type: string }
+      - { name: etichetta, label: Etichetta, type: string }
+      - { name: intro, label: Introduzione, type: text }
+      - { name: foto, label: Foto, type: image }
+      - { name: titolo_direttivo, label: Titolo sezione direttivo, type: string }
+      - name: direttivo
+        label: Consiglio Direttivo
+        type: object
+        list: true
+        fields:
+          - { name: nome, label: Nome e cognome, type: string }
+          - { name: ruolo, label: Ruolo, type: string }
+      - { name: body, label: Testo, type: rich-text }
+
+  - name: associazione
+    label: "Pagina: Statuto e safeguarding"
+    type: file
+    path: src/content/pagine/associazione.md
+    fields:
+      - { name: titolo, label: Titolo, type: string }
+      - { name: etichetta, label: Etichetta, type: string }
+      - { name: intro, label: Introduzione, type: text }
+      - name: documenti
+        label: Documenti
+        type: object
+        list: true
+        fields:
+          - { name: titolo, label: Titolo, type: string }
+          - { name: file, label: File PDF, type: file }
+      - { name: safeguarding_testo, label: Safeguarding - testo, type: text }
+      - { name: safeguarding_nome, label: Safeguarding - responsabile, type: string }
+      - { name: safeguarding_telefono, label: Safeguarding - telefono, type: string }
+      - { name: safeguarding_email, label: Safeguarding - email, type: string }
+      - { name: canale_segnalazioni, label: Link al canale segnalazioni ACSI, type: string }
+
+  - name: privacy
+    label: "Pagina: Privacy e cookie"
+    type: file
+    path: src/content/pagine/privacy.md
+    fields:
+      - { name: titolo, label: Titolo, type: string }
+      - { name: etichetta, label: Etichetta, type: string }
+      - { name: body, label: Testo, type: rich-text }
+
   - name: pagina-corsi
     label: "Pagina: Corsi"
     type: file
@@ -148,7 +202,10 @@ content:
       - { name: etichetta, label: Etichetta, type: string }
       - { name: intro, label: Introduzione, type: text }
       - { name: titolo_ricreativi, label: Titolo sezione ricreativi, type: string }
+      - { name: intro_ricreativi, label: Introduzione ricreativi, type: text }
       - { name: titolo_tecnici, label: Titolo sezione tecnici, type: string }
+      - { name: intro_tecnici, label: Introduzione tecnici, type: text }
+      - { name: nota, label: Nota in fondo alla pagina, type: rich-text }
 
   - name: pagina-eventi
     label: "Pagina: Eventi"
@@ -189,11 +246,9 @@ content:
       - { name: ragione_sociale, label: Ragione sociale, type: string }
       - { name: sede, label: Indirizzo sede, type: string }
       - { name: codice_fiscale, label: Codice fiscale, type: string }
-      - { name: piscina, label: Indirizzo piscina, type: string }
+      - { name: piscina, label: Piscina (nome e indirizzo), type: string }
       - { name: orari_piscina, label: Giorni e orari piscina, type: string }
       - { name: email, label: Email, type: string }
       - { name: telefono, label: Telefono, type: string }
       - { name: facebook, label: Link Facebook, type: string }
       - { name: instagram, label: Link Instagram, type: string }
-      - { name: statuto, label: Statuto (PDF), type: file }
-      - { name: safeguarding, label: Documento safeguarding (PDF), type: file }

@@ -1,4 +1,6 @@
 ---
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource-variable/source-sans-3';
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
 import s from '../data/impostazioni.json';
@@ -10,6 +12,7 @@ const nav = [
   { href: '/', label: 'Home' },
   { href: '/corsi/', label: 'Corsi' },
   { href: '/eventi/', label: 'Eventi' },
+  { href: '/chi-siamo/', label: 'Chi siamo' },
   { href: '/leggenda/', label: 'La leggenda' },
   { href: '/contatti/', label: 'Contatti' },
 ];
@@ -26,9 +29,6 @@ const active = (h: string) => (h === '/' ? path === '/' : path.startsWith(h));
   <meta property="og:description" content={description} />
   <meta name="theme-color" content="#111518" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,400..900&family=Source+Sans+3:wght@400;600&display=swap" />
 </head>
 <body>
   <a class="sr-only" href="#contenuto">Vai al contenuto</a>
@@ -52,17 +52,17 @@ const active = (h: string) => (h === '/' ? path === '/' : path.startsWith(h));
     </div>
     <div>
       <strong>Associazione</strong>
-      {s.statuto && <a href={s.statuto}>Statuto e regolamenti</a>}
-      {s.safeguarding && <a href={s.safeguarding}>Safeguarding e tutela minori</a>}
+      <a href="/chi-siamo/">Chi siamo</a>
+      <a href="/associazione/">Statuto e safeguarding</a>
       <a href="/siti/">Siti d'immersione</a>
-      <a href="/eventi/">Eventi</a>
+      <a href="/privacy/">Privacy e cookie</a>
     </div>
     <div>
       <strong>Seguici</strong>
       {s.facebook && <a href={s.facebook}>Facebook</a>}
       {s.instagram && <a href={s.instagram}>Instagram</a>}
       {s.email && <a href={`mailto:${s.email}`}>{s.email}</a>}
-      <span style="color: var(--ember)">Istruttori certificati CMAS-PTA</span>
+      <span style="color: var(--ember)">Affiliata ACSI - Istruttori CMAS-PTA</span>
     </div>
   </footer>
   <script>

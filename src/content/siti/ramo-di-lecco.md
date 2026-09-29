@@ -10,4 +10,4 @@ galleria: []
 in_evidenza: true
 ordine: 10
 ---
-[Descrizione del sito: cosa si vede, quote interessanti, attenzioni particolari.]
+<p>[Descrizione del sito: cosa si vede, quote interessanti, attenzioni particolari.]</p>

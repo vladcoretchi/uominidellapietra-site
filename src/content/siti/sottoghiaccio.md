@@ -9,4 +9,4 @@ galleria: []
 in_evidenza: true
 ordine: 30
 ---
-[Descrizione del sito e della stagione.]
+<p>[Descrizione del sito e della stagione.]</p>

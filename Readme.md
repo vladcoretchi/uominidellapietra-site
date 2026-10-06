@@ -37,6 +37,13 @@ Nei testi si evita "gratuito": il battesimo si presenta come esperienza speciale
 
 I caratteri (Archivo e Source Sans 3) sono ospitati sul sito tramite Fontsource, senza richieste a Google Fonts.
 
+## SEO
+
+- Sitemap generata da `@astrojs/sitemap` (`/sitemap-index.xml`), indicata in `public/robots.txt`.
+- Ogni pagina ha canonical e `og:url` su `https://www.uominidellapietra.it`, eventi e siti anche `og:image` dalla copertina; la 404 è `noindex`.
+- Le vecchie URL Joomla (`/index.php?...`) vanno con un 301 alla pagina nuova equivalente: le gestisce `worker/index.js`, eseguito solo per `/index.php*` (`run_worker_first` in `wrangler.jsonc`); il resto del sito resta statico.
+- Dominio senza www e http vanno su `https://www.` tramite Cloudflare (Always Use HTTPS e una Redirect Rule), non dal codice.
+
 ## Sviluppo
 
 Richiede Node.js 22.12 o superiore.

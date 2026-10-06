@@ -14,7 +14,7 @@ const d = evento.data;
 const { Content } = await render(evento);
 const hasBody = Boolean(evento.body?.trim());
 ---
-<Base title={d.titolo} description={d.descrizione}>
+<Base title={d.titolo} description={d.descrizione} image={d.copertina} type="article">
   <PageHead depth="-18 m" tone="deep" tag={tipoLabel(d.tipo)} title={d.titolo} intro={d.descrizione}>
     <p class="soft" style="margin: 0; font-size: 19px"><strong style="color: #fff">{dataLunga(evento)}</strong>{d.luogo && <>, {d.luogo}</>}{d.livello && <> - {d.livello}</>}</p>
   </PageHead>

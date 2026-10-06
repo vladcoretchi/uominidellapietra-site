@@ -12,7 +12,7 @@ const { sito } = Astro.props;
 const d = sito.data;
 const { Content } = await render(sito);
 ---
-<Base title={d.nome} description={d.descrizione}>
+<Base title={d.nome} description={d.descrizione} image={d.copertina}>
   <PageHead depth={d.profondita ? `-${d.profondita} m` : '-25 m'} tone="abyss" tag={d.lago} title={d.nome} intro={d.descrizione} />
   <section class="paper stack-lg">
     <div class="grid" style="--cols: 3; gap: 48px">

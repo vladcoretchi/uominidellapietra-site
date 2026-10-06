@@ -4,10 +4,13 @@ import '@fontsource-variable/source-sans-3';
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
 import s from '../data/impostazioni.json';
-interface Props { title?: string; description?: string }
-const { title, description = `${s.nome}: ${s.sottotitolo}. Corsi, uscite ai laghi di Como e Iseo, subacquea tecnica e sottoghiaccio.` } = Astro.props;
+interface Props { title?: string; description?: string; image?: string; type?: string; noindex?: boolean }
+const { title, description = `${s.nome}: ${s.sottotitolo}. Corsi, uscite ai laghi di Como e Iseo, subacquea tecnica e sottoghiaccio.`, image, type = 'website', noindex = false } = Astro.props;
 const fullTitle = title ? `${title} | ${s.nome}` : `${s.nome} | ${s.sottotitolo}`;
 const path = Astro.url.pathname;
+// Canonical always on www with trailing slash, like the sitemap
+const canonical = new URL(path.endsWith('/') ? path : `${path}/`, Astro.site).href;
+const ogImage = image ? new URL(image, Astro.site).href : undefined;
 const nav = [
   { href: '/', label: 'Home' },
   { href: '/corsi/', label: 'Corsi' },
@@ -27,6 +30,13 @@ const active = (h: string) => (h === '/' ? path === '/' : path.startsWith(h));
   <meta name="description" content={description} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
+  {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+  <meta property="og:url" content={canonical} />
+  <meta property="og:type" content={type} />
+  <meta property="og:site_name" content={s.nome} />
+  <meta property="og:locale" content="it_IT" />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  <link rel="sitemap" href="/sitemap-index.xml" />
   <meta name="theme-color" content="#121011" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <script is:inline>

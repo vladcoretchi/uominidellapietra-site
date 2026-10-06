@@ -1,5 +1,5 @@
 ---
-nome: Juancito
+nome: Juançito
 lago: Lago di Como
 profondita: 100
 livello: Avanzato e tecnico

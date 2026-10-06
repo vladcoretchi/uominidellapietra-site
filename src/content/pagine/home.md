@@ -5,14 +5,14 @@ hero_testo: Scuola subacquea CMAS-PTA di Bergamo. Dalla prima bolla in piscina a
 percorso_titolo: Il tuo percorso
 percorso:
   - titolo: Inizia
-    testo: "Battesimo in piscina a Dalmine: respira sott'acqua per la prima volta, con un istruttore accanto."
+    testo: "Prova di immersione in piscina a Dalmine: respira sott'acqua per la prima volta, con un istruttore accanto."
   - titolo: Cresci
     testo: "Corsi ricreativi CMAS-PTA: teoria in aula, piscina e immersioni vere nei nostri laghi."
-  - titolo: Vai a fondo
+  - titolo: Approfondisci
     testo: "Subacquea tecnica: decompressione, profondismo in aria e trimix, sottoghiaccio."
 eventi_titolo: In agenda
 laghi_titolo: I nostri laghi
-laghi_testo: "Il ramo di Lecco, dove tutto è cominciato, e poi Iseo e i laghi alpini d'inverno, sotto il ghiaccio."
+laghi_testo: "Il ramo di Lecco, dove tutto è cominciato, e poi Iseo, il Garda e i laghi alpini d'inverno, sotto il ghiaccio."
 tecnica_titolo: Dove gli altri si fermano
 tecnica:
   - quota: 47
@@ -26,5 +26,5 @@ tecnica:
 leggenda_titolo: Gli altri cercavano la scintilla del fuoco. Noi quella della curiosità.
 leggenda_testo: Molto prima del fuoco, sul ramo di Lecco del lago di Como, cinque sconsiderati scoprirono che con una *pietra* in mano si arrivava fino al fondo.
 cta_titolo: La prima bolla è speciale.
-cta_bottone: Prenota il battesimo
+cta_bottone: Prenota la prova di immersione
 ---

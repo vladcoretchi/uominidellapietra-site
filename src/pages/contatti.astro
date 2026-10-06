@@ -18,7 +18,7 @@ const p = (await getEntry('pagine', 'contatti'))!.data as any;
       </div>
       <form class="form" data-email={s.email} action={`mailto:${s.email}`} method="post" enctype="text/plain">
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
-          <h2 class="display h-sm" style="color: var(--slate)">Prenota il battesimo</h2>
+          <h2 class="display h-sm" style="color: var(--slate)">Prenota la prova di immersione</h2>
           <img src="/uploads/logo/sasso.svg" alt="" width="64" height="64" />
         </div>
         <label for="f-nome">Nome e cognome</label>
@@ -43,6 +43,6 @@ const p = (await getEntry('pagine', 'contatti'))!.data as any;
     e.preventDefault();
     const f = new FormData(form);
     const body = `Nome: ${f.get('nome')}\nEmail: ${f.get('email')}\nTelefono: ${f.get('telefono')}\n\nNote:\n${f.get('note')}`;
-    location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent('Prenotazione battesimo')}&body=${encodeURIComponent(body)}`;
+    location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent('Prenotazione prova di immersione')}&body=${encodeURIComponent(body)}`;
   });
 </script>

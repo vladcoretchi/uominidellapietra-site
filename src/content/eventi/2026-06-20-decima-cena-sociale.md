@@ -1,6 +1,6 @@
 ---
 titolo: Decima Cena Sociale e consegna brevetti
-tipo: cena-sociale
+tipo: ritrovo-sociale
 data_inizio: '2026-06-20'
 luogo: Festa Alpina, Castelli Calepio (BG)
 descrizione: 'Sabato 20 giugno 2026, ore 19.30: cena sociale e consegna dei brevetti.'

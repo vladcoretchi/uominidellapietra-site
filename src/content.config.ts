@@ -14,7 +14,7 @@ export const TIPI_EVENTO = {
   'uscita-mare': 'Uscita al mare',
   vacanza: 'Vacanza',
   'settimana-blu': 'Settimana blu',
-  'cena-sociale': 'Cena sociale',
+  'ritrovo-sociale': 'Ritrovo sociale',
   corso: 'Corso',
   'prova-gratuita': 'Prova in piscina',
   assemblea: 'Assemblea',

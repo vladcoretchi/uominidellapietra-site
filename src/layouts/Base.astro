@@ -19,6 +19,12 @@ const nav = [
   { href: '/leggenda/', label: 'La leggenda' },
   { href: '/contatti/', label: 'Contatti' },
 ];
+// Affiliation logos in the footer bar (light versions for the dark background)
+const loghi = [
+  { src: '/uploads/loghi/acsi-chiaro.png', alt: 'ACSI, ente di promozione sportiva', href: 'https://www.acsi.it/', w: 160, h: 76 },
+  { src: '/uploads/loghi/cmas-chiaro.svg', alt: 'CMAS, Confédération Mondiale des Activités Subaquatiques', href: 'https://www.cmas.org/', w: 196, h: 76 },
+  { src: '/uploads/loghi/pta.png', alt: 'PTA, Pure Tek Training', href: 'https://pta-intl.com/', w: 76, h: 76 },
+];
 const active = (h: string) => (h === '/' ? path === '/' : path.startsWith(h));
 ---
 <!doctype html>
@@ -82,7 +88,12 @@ const active = (h: string) => (h === '/' ? path === '/' : path.startsWith(h));
       {s.facebook && <a href={s.facebook}>Facebook</a>}
       {s.instagram && <a href={s.instagram}>Instagram</a>}
       {s.email && <a href={`mailto:${s.email}`}>{s.email}</a>}
-      <span style="color: var(--ember)">Affiliata ACSI - Istruttori CMAS-PTA</span>
+    </div>
+    <div class="footer-bar">
+      <span>Affiliata ACSI - Istruttori CMAS-PTA</span>
+      <div class="footer-loghi">
+        {loghi.map((l) => <a href={l.href} aria-label={l.alt}><img src={l.src} alt={l.alt} width={l.w} height={l.h} loading="lazy" /></a>)}
+      </div>
     </div>
   </footer>
   <script>

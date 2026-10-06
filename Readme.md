@@ -31,9 +31,11 @@ I siti d'immersione non sono nel menu: si raggiungono dalla home (quelli con "Mo
 
 Il logo è lo scudo storico UDP: `public/uploads/logo/udp-logo.svg` (originale, anche come icona) e `udp-logo-chiaro.svg` (versione chiara per header e footer), usati tramite `src/components/Logo.astro`; la favicon resta il sasso "Sasso e onda" nei colori dello scudo. I colori del sito (grigio e rosso) derivano dallo scudo. La variante moderna con logo "Sasso e onda" e palette ardesia/arancione è sul branch `design/moderno`. L'illustrazione del hero della home è disegnata a livelli in `src/components/HeroArt.astro`; quella della leggenda è in `public/uploads/leggenda/leggenda.svg`.
 
+I loghi di affiliazione (ACSI, CMAS, PTA) sono in `public/uploads/loghi`, in versione chiara per il footer scuro, e si elencano in `src/layouts/Base.astro`.
+
 Le foto non ancora caricate, o che non si caricano (404), mostrano il sasso come segnaposto.
 
-Nei testi si evita "gratuito": il battesimo si presenta come esperienza speciale, non come offerta.
+Nei testi si evita "gratuito": la prova di immersione in piscina si presenta come esperienza speciale, non come offerta.
 
 I caratteri (Archivo e Source Sans 3) sono ospitati sul sito tramite Fontsource, senza richieste a Google Fonts.
 
@@ -64,4 +66,4 @@ npm run deploy    # build + pubblicazione manuale con Wrangler
 ## Evoluzioni previste
 
 - Spostamento delle foto su Cloudflare R2.
-- Form del battesimo con invio reale (per ora compone una email precompilata).
+- Form della prova di immersione con invio reale (per ora compone una email precompilata).

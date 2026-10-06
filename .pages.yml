@@ -30,7 +30,7 @@ content:
             - { value: uscita-mare, label: Uscita al mare }
             - { value: vacanza, label: Vacanza }
             - { value: settimana-blu, label: Settimana blu }
-            - { value: cena-sociale, label: Cena sociale }
+            - { value: ritrovo-sociale, label: Ritrovo sociale }
             - { value: corso, label: Corso }
             - { value: prova-gratuita, label: Prova in piscina }
             - { value: assemblea, label: Assemblea }

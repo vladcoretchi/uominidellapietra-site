@@ -21,7 +21,7 @@ const [primo, ...altri] = siti;
       <h1 class="display hero-title" set:html={hl(h.hero_titolo)} />
       <p class="lead">{h.hero_testo}</p>
       <div style="display: flex; gap: 16px; flex-wrap: wrap">
-        <a class="btn btn-ember" href="/contatti/">Prenota il battesimo</a>
+        <a class="btn btn-ember" href="/contatti/">Prenota la prova di immersione</a>
         <a class="btn btn-ghost" href="/corsi/">Scopri i corsi</a>
       </div>
     </div>
@@ -61,7 +61,8 @@ const [primo, ...altri] = siti;
           <a href={`/siti/${primo.id}/`} class="card-glass" style="grid-column: span 2; grid-row: span 2; justify-content: flex-end; min-height: 460px; padding: 0; overflow: hidden; text-decoration: none; color: inherit">
             <Photo src={primo.data.copertina} alt={primo.data.nome} label="Foto grande del sito" style="flex-grow: 1; min-height: 300px" />
             <div style="padding: 28px 32px 32px" class="stack">
-              <h3 class="display h-sm" style="font-size: 48px">{primo.data.lago}</h3>
+              <p class="tag">{primo.data.lago}</p>
+              <h3 class="display h-sm" style="font-size: 48px">{primo.data.nome}</h3>
               <p class="soft">{primo.data.descrizione}</p>
             </div>
           </a>

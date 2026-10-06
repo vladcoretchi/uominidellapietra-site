@@ -14,9 +14,7 @@ direttivo:
   - nome: Luigi Carozzi
     ruolo: Consigliere
   - nome: Serena D'Agresti
-    ruolo: Consigliera
-  - nome: Graziano Copler
-    ruolo: Consigliere
+    ruolo: Tesoriera
 ---
 <p>Per i propri Soci, Uomini della Pietra asd organizza attività subacquee a tutti i livelli: dal primo grado fino ai livelli tecnici per il profondismo e l'uso di miscele decompressive.</p>
 <p>Lo staff dei dirigenti è composto da istruttori brevettati CMAS-PTA e SDI-TDI. I nostri istruttori hanno inoltre il Diploma Nazionale ACSI per Attività Subacquee, nel rispetto della <a href="https://www.gazzettaufficiale.it/atto/regioni/caricaDettaglioAtto/originario?atto.dataPubblicazioneGazzetta=2003-05-17&amp;atto.codiceRedazionale=003R0193">Legge Regionale 8 ottobre 2002 n. 26 (comma 5, art. 8)</a>.</p>

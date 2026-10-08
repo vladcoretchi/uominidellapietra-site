@@ -1,11 +1,28 @@
 ---
 nome: Cementificio
 lago: Lago d'Iseo
-ingresso: "Da riva a Tavernola Bergamasca: circa 100 metri prima del cementificio c'è uno spiazzo per parcheggiare e uno scivolo comodo per entrare in acqua."
-descrizione: Sulla sponda bergamasca del Sebino, di fronte a Monte Isola, sotto lo storico cementificio di Tavernola.
-copertina: ''
-galleria: []
+profondita: 60
+livello: Deep
+ingresso: >-
+  C'è uno spiazzo per parcheggiare e uno scivolo comodo per entrare in acqua.
+
+  Si parte da riva.
+
+  Lo scivolo è usato anche per alare piccole imbarcazioni, nel caso date loro la
+  precedenza e segnalate che state facendo un'immersione.
+
+  Mettete la boa.
+descrizione: Sulla sponda bergamasca del Sebino, di fronte a Monte Isola, sotto
+  lo storico Cementificio di Tavernola Bergamasca.
 in_evidenza: true
 ordine: 20
 ---
-<p>Un'immersione da riva comoda e vicina a casa, sulla sponda bergamasca del lago d'Iseo, ai piedi del cementificio di Tavernola Bergamasca che dal 1902 lavora la marna del Monte Saresano. Lo scivolo rende facili l'ingresso e l'uscita anche con l'attrezzatura tecnica.</p>
+Un'immersione da riva comoda, sulla sponda bergamasca del lago d'Iseo, ai piedi dello storico Cementificio di Tavernola Bergamasca che dal 1902 lavora la marna del Monte Saresano.
+
+# il Cementificio
+
+L'ingresso è facilitato dalla presenza di un scivolo che entra gradualmente in acqua. 
+
+
+
+&nbsp;

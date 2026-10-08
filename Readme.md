@@ -17,11 +17,14 @@ Ogni salvataggio da Pages CMS crea un commit su GitHub; Cloudflare ricostruisce 
 | Eventi (uscite, vacanze, cene, assemblee, notizie...) | `src/content/eventi` | Eventi |
 | Siti d'immersione | `src/content/siti` | Siti d'immersione |
 | Corsi | `src/content/corsi` | Corsi |
+| Citazioni (poesie, frasi) da collegare alle pagine | `src/content/citazioni` | Citazioni |
 | Testi delle pagine (home, chi siamo, statuto e safeguarding, privacy...) | `src/content/pagine` | Pagina: ... |
 | Dati generali, contatti, social | `src/data/impostazioni.json` | Impostazioni generali |
 | Foto e documenti | `public/uploads` | Media |
 
 I contenuti storici (news, archivio, corsi, chi siamo, statuto, safeguarding) sono stati importati dal vecchio sito Joomla: le foto sono in `public/uploads/archivio`, i PDF in `public/uploads/documenti`.
+
+Le citazioni si scrivono una volta nella raccolta e si collegano a Leggenda, Home e Chi siamo con il campo "Citazione (dalla raccolta)"; le mostra `src/components/Citazione.astro`. Se il campo è vuoto non compare nulla.
 
 Nei campi indicati dal CMS, una parola tra asterischi (`*pietra*`) viene mostrata in arancione.
 

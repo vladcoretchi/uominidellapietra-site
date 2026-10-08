@@ -5,6 +5,7 @@ import Depth from '../components/Depth.astro';
 import HeroArt from '../components/HeroArt.astro';
 import Photo from '../components/Photo.astro';
 import EventLists from '../components/EventLists.astro';
+import Citazione from '../components/Citazione.astro';
 
 const h = (await getEntry('pagine', 'home'))!.data as any;
 // Escape text, then turn *word* into an orange highlight
@@ -96,6 +97,7 @@ const [primo, ...altri] = siti;
     <div class="stack" style="align-items: center; text-align: center; gap: 28px">
       <p class="display h-md" style="max-width: 1100px" set:html={hl(h.leggenda_titolo)} />
       <p class="lead soft" set:html={hl(h.leggenda_testo)} />
+      <Citazione id={h.citazione_id} tone="dark" class="citazione-center" />
       <a class="btn btn-ember" href="/leggenda/">Leggi la leggenda</a>
     </div>
   </Depth>

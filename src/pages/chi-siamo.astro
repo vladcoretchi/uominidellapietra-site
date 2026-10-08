@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 import Photo from '../components/Photo.astro';
 import Logo from '../components/Logo.astro';
+import Citazione from '../components/Citazione.astro';
 
 const entry = (await getEntry('pagine', 'chi-siamo'))!;
 const p = entry.data as any;
@@ -13,7 +14,10 @@ const { Content } = await render(entry);
   <PageHead depth="-5 m" tone="base" tag={p.etichetta} title={p.titolo} intro={p.intro} />
   <section class="paper stack-lg">
     <div class="grid" style="--cols: 2; gap: 48px; align-items: start">
-      <div class="prose"><Content /></div>
+      <div class="stack-lg">
+        <div class="prose"><Content /></div>
+        <Citazione id={p.citazione_id} />
+      </div>
       <div class="stack">
         <Photo src={p.foto} alt="Gli Uomini della Pietra con lo striscione del gruppo" style="border-radius: var(--radius); min-height: 300px" />
         <a class="link" href="/leggenda/" style="align-self: flex-start">E perché ci chiamiamo così? Leggi la leggenda</a>

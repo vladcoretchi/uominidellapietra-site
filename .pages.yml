@@ -99,6 +99,21 @@ content:
       - { name: ordine, label: Ordine (numero più basso prima), type: number, default: 100 }
       - { name: body, label: Descrizione, type: rich-text }
 
+  - name: citazioni
+    label: Citazioni
+    type: collection
+    path: src/content/citazioni
+    filename: "{primary}-{year}{month}{day}.md"
+    view:
+      fields: [autore, opera, anno]
+      primary: autore
+    fields:
+      - { name: autore, label: Autore, type: string, required: true }
+      - { name: opera, label: Opera, type: string }
+      - { name: anno, label: Anno, type: string }
+      - { name: testo, label: Testo (gli a capo restano), type: text, required: true }
+      - { name: traduzione, label: "Traduzione o fonte (es. trad. di ...)", type: string }
+
   # Page texts
   - name: home
     label: "Pagina: Home"
@@ -131,6 +146,13 @@ content:
       - { name: leggenda_testo, label: "Leggenda - testo (*parola* = arancione)", type: text }
       - { name: cta_titolo, label: "Fascia finale - titolo (*parola* = arancione)", type: string }
       - { name: cta_bottone, label: Fascia finale - bottone, type: string }
+      - name: citazione_id
+        label: Citazione (dalla raccolta)
+        type: reference
+        options:
+          collection: citazioni
+          search: autore, opera, testo
+          label: "{autore} - {opera}"
 
   - name: leggenda
     label: "Pagina: La leggenda"
@@ -143,6 +165,13 @@ content:
       - { name: citazione, label: Citazione in evidenza, type: text }
       - { name: illustrazione, label: Illustrazione, type: image }
       - { name: body, label: Racconto, type: rich-text }
+      - name: citazione_id
+        label: Citazione (dalla raccolta)
+        type: reference
+        options:
+          collection: citazioni
+          search: autore, opera, testo
+          label: "{autore} - {opera}"
 
   - name: chi-siamo
     label: "Pagina: Chi siamo"
@@ -162,6 +191,13 @@ content:
           - { name: nome, label: Nome e cognome, type: string }
           - { name: ruolo, label: Ruolo, type: string }
       - { name: body, label: Testo, type: rich-text }
+      - name: citazione_id
+        label: Citazione (dalla raccolta)
+        type: reference
+        options:
+          collection: citazioni
+          search: autore, opera, testo
+          label: "{autore} - {opera}"
 
   - name: associazione
     label: "Pagina: Statuto e safeguarding"

@@ -1,0 +1,18 @@
+---
+// Quote from the citazioni collection, linked by id or CMS path
+import { getEntry } from 'astro:content';
+interface Props { id?: string; tone?: 'light' | 'dark'; class?: string }
+const { id, tone = 'light', class: cls = '' } = Astro.props;
+const slug = id?.split('/').pop()?.replace(/\.md$/, '');
+const c = slug ? (await getEntry('citazioni', slug))?.data : undefined;
+const fonte = [c?.opera, c?.anno && `(${c.anno})`].filter(Boolean).join(' ');
+---
+{c && (
+  <figure class={`citazione citazione-${tone} ${cls}`}>
+    <blockquote>{c.testo}</blockquote>
+    <figcaption>
+      <span>{c.autore}</span>{fonte && <>, <cite>{fonte}</cite></>}
+      {c.traduzione && <span class="citazione-trad">{c.traduzione}</span>}
+    </figcaption>
+  </figure>
+)}

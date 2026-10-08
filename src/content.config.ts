@@ -71,9 +71,20 @@ const corsi = defineCollection({
   }),
 });
 
+const citazioni = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/citazioni' }),
+  schema: z.object({
+    testo: z.string(),
+    autore: z.string(),
+    opera: text,
+    anno: z.preprocess((v) => (v === '' || v === null ? undefined : String(v)), z.string().optional()),
+    traduzione: text,
+  }),
+});
+
 const pagine = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pagine' }),
   schema: z.object({}).passthrough(),
 });
 
-export const collections = { eventi, siti, corsi, pagine };
+export const collections = { eventi, siti, corsi, citazioni, pagine };

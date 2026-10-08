@@ -3,6 +3,7 @@ import { getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 import Photo from '../components/Photo.astro';
+import Citazione from '../components/Citazione.astro';
 
 const entry = (await getEntry('pagine', 'leggenda'))!;
 const p = entry.data as any;
@@ -17,6 +18,7 @@ const { Content } = await render(entry);
   <section class="paper">
     <div class="grid" style="--cols: 3; gap: 56px">
       <div style="grid-column: span 2" class="stack">
+        <Citazione id={p.citazione_id} class="citazione-epigrafe" />
         <div class="prose"><Content /></div>
         {p.citazione && <p class="display" style="font-size: clamp(28px, 3vw, 40px); line-height: 1.1; font-stretch: 70%; text-transform: none; letter-spacing: 0; color: var(--slate)">{p.citazione}</p>}
       </div>

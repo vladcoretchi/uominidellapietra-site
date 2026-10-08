@@ -9,6 +9,7 @@ fondatori:
   - Sever
 citazione: Gli altri cercavano la scintilla del fuoco; loro ne accesero un'altra, quella della curiosità per ciò che si nasconde sotto la superficie dei laghi.
 illustrazione: /uploads/leggenda/leggenda.svg
+citazione_id: src/content/citazioni/yeats-il-pesce.md
 ---
 <p>Tanto tempo fa, quando le montagne erano ancora giovani e il lago di Como non aveva ancora un nome (e nemmeno un parcheggio libero la domenica), sul ramo di Lecco viveva una piccola tribù. Il fuoco non esisteva ancora e al villaggio tutti passavano le giornate a sfregare bastoncini, sperando in una scintilla. Tutti tranne cinque: Simù, Gigi, Omar, Robi e Sever.</p>
 <p>Un giorno Simù provò a scendere verso il fondo, ma il lago lo risputava in superficie. Gigi gli passò il suo sasso: Simù lo strinse al petto e scese fino alle rocce, con Omar al fianco a scoprire pesci argentati e luce verde che tremava. Era nata la prima zavorra.</p>

@@ -161,6 +161,9 @@ img.photo-missing { object-fit: contain; padding: clamp(24px, 18%, 110px); backg
 .event-type { font-size: 14px; font-weight: 600; padding: 2px 12px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; opacity: .85; }
 .on-paper .event-row { border-color: var(--line); }
 @media (max-width: 700px) { .event-row { grid-template-columns: 90px minmax(0, 1fr); } .event-row .event-type { grid-column: 2; justify-self: start; } }
+/* Event cover shown whole (also portrait flyers), centered once the column is full width */
+.event-cover { border-radius: var(--radius); width: auto; max-width: 100%; height: auto; max-height: 640px; padding: 0; align-self: flex-start; }
+@media (max-width: 900px) { .event-cover { align-self: center; } }
 .filters { display: flex; flex-wrap: wrap; gap: 10px; }
 .filters button { min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 1px solid var(--line); background: #fff; font: inherit; font-weight: 600; color: var(--ink); cursor: pointer; }
 .filters button[aria-pressed="true"] { background: var(--slate); border-color: var(--slate); color: #fff; }

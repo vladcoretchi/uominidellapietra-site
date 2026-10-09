@@ -28,7 +28,7 @@ Le citazioni si scrivono una volta nella raccolta e si collegano a Leggenda, Hom
 
 Nei campi indicati dal CMS, una parola tra asterischi (`*pietra*`) viene mostrata in arancione.
 
-In home compaiono in automatico i prossimi eventi e gli ultimi passati. La divisione viene ricalcolata anche nel browser in base alla data del visitatore, quindi un evento concluso passa tra i passati senza bisogno di ripubblicare. Un evento con **Bozza** attiva non viene pubblicato.
+In home compaiono in automatico i prossimi eventi e gli ultimi passati. La divisione viene ricalcolata anche nel browser in base alla data del visitatore, quindi un evento concluso passa tra i passati senza bisogno di ripubblicare. Un evento con **Bozza** attiva non viene pubblicato. Agli eventi si possono allegare file (volantini, programmi, moduli) dal campo "Allegati": compaiono sotto i Dettagli come card da scaricare, con tipo e dimensione. La copertina degli eventi si vede intera (anche un volantino verticale).
 
 I siti d'immersione non sono nel menu: si raggiungono dalla home (quelli con "Mostra in home") e dal footer.
 

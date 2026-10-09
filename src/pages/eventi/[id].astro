@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { statSync } from 'node:fs';
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import Photo from '../../components/Photo.astro';
@@ -13,6 +14,20 @@ const { evento } = Astro.props;
 const d = evento.data;
 const { Content } = await render(evento);
 const hasBody = Boolean(evento.body?.trim());
+
+// File type and size (read from public/ at build time) for each attachment
+const allegati = d.allegati.map((a) => {
+  const nome = decodeURIComponent(a.file.split('/').pop() ?? a.file);
+  const ext = nome.includes('.') ? nome.split('.').pop()!.toUpperCase() : '';
+  let size = '';
+  try {
+    const bytes = statSync(`public${decodeURIComponent(a.file)}`).size;
+    size = bytes >= 1048576 ? `${(bytes / 1048576).toFixed(1).replace('.', ',')} MB` : `${Math.max(1, Math.round(bytes / 1024))} KB`;
+  } catch {
+    // Missing or external file: show the link without size
+  }
+  return { href: a.file, titolo: a.titolo ?? nome, ext, size };
+});
 ---
 <Base title={d.titolo} description={d.descrizione} image={d.copertina} type="article">
   <PageHead depth="-18 m" tone="deep" tag={tipoLabel(d.tipo)} title={d.titolo} intro={d.descrizione}>
@@ -21,19 +36,31 @@ const hasBody = Boolean(evento.body?.trim());
   <section class="paper stack-lg">
     <div class="grid" style="--cols: 3; gap: 48px">
       <div class="stack" style="grid-column: span 2">
-        {d.copertina && <Photo src={d.copertina} alt={d.titolo} style="border-radius: var(--radius); max-height: 520px" />}
+        {d.copertina && <Photo src={d.copertina} alt={d.titolo} class="event-cover" />}
         {hasBody ? <div class="prose prose-end"><Content /></div> : <p class="muted">Il resoconto arriverà dopo l'evento.</p>}
       </div>
-      <aside class="card" style="align-self: start">
-        <div class="card-body">
-          <h3>Dettagli</h3>
-          <p><strong>Quando:</strong> {dataLunga(evento)}</p>
-          {d.luogo && <p><strong>Dove:</strong> {d.luogo}</p>}
-          {d.livello && <p><strong>Livello:</strong> {d.livello}</p>}
-          {d.iscrizione && <p><strong>Iscrizioni:</strong> {d.iscrizione}</p>}
-          <a class="btn btn-ember" href="/contatti/" style="margin-top: 8px">Chiedi informazioni</a>
-        </div>
-      </aside>
+      <div class="stack" style="align-self: start">
+        <aside class="card">
+          <div class="card-body">
+            <h3>Dettagli</h3>
+            <p><strong>Quando:</strong> {dataLunga(evento)}</p>
+            {d.luogo && <p><strong>Dove:</strong> {d.luogo}</p>}
+            {d.livello && <p><strong>Livello:</strong> {d.livello}</p>}
+            {d.iscrizione && <p><strong>Iscrizioni:</strong> {d.iscrizione}</p>}
+            <a class="btn btn-ember" href="/contatti/" style="margin-top: 8px">Chiedi informazioni</a>
+          </div>
+        </aside>
+        {allegati.length > 0 && (
+          <div class="docs">
+            {allegati.map((a) => (
+              <a class="doc" href={a.href} target="_blank" rel="noopener">
+                <span>{a.titolo}{a.size && <small class="muted" style="font-weight: 400"> ({a.size})</small>}</span>
+                <span>Scarica{a.ext && ` ${a.ext}`}</span>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
     {d.galleria.length > 0 && (
       <div class="stack">

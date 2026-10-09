@@ -45,6 +45,13 @@ content:
       - { name: iscrizione, label: Come iscriversi, type: string }
       - { name: copertina, label: Foto di copertina, type: image }
       - { name: galleria, label: Galleria foto, type: image, list: true }
+      - name: allegati
+        label: Allegati (volantini, programmi, moduli...)
+        type: object
+        list: true
+        fields:
+          - { name: titolo, label: Titolo (es. Volantino), type: string }
+          - { name: file, label: File, type: file, required: true }
       - { name: bozza, label: Bozza (non pubblicare ancora), type: boolean, default: false }
       - { name: body, label: Resoconto (dopo l'evento), type: rich-text }
 

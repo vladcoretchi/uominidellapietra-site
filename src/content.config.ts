@@ -8,6 +8,11 @@ const text = z.preprocess(empty, z.string().optional());
 const num = z.preprocess(empty, z.coerce.number().optional());
 const date = z.preprocess(empty, z.coerce.date().optional());
 const images = z.preprocess((v) => (Array.isArray(v) ? v.filter(Boolean) : []), z.array(z.string()));
+// Downloadable files: entries without a file are dropped
+const allegati = z.preprocess(
+  (v) => (Array.isArray(v) ? v.filter((a) => a && a.file) : []),
+  z.array(z.object({ file: z.string(), titolo: text })),
+);
 
 export const TIPI_EVENTO = {
   'uscita-lago': 'Uscita al lago',
@@ -36,6 +41,7 @@ const eventi = defineCollection({
     iscrizione: text,
     copertina: text,
     galleria: images,
+    allegati,
     bozza: z.preprocess(empty, z.boolean().default(false)),
   }),
 });

@@ -34,7 +34,7 @@ I siti d'immersione non sono nel menu: si raggiungono dalla home (quelli con "Mo
 
 Il logo è lo scudo storico UDP: `public/uploads/logo/udp-logo.svg` (originale, anche come icona) e `udp-logo-chiaro.svg` (versione chiara per header e footer), usati tramite `src/components/Logo.astro`; la favicon resta il sasso "Sasso e onda" nei colori dello scudo. I colori del sito (grigio e rosso) derivano dallo scudo. La variante moderna con logo "Sasso e onda" e palette ardesia/arancione è sul branch `design/moderno`. L'illustrazione del hero della home è disegnata a livelli in `src/components/HeroArt.astro`; quella della leggenda è in `public/uploads/leggenda/leggenda.svg`.
 
-I loghi di affiliazione (ACSI, CMAS, PTA) sono in `public/uploads/loghi`, in versione chiara per il footer scuro, e si elencano in `src/layouts/Base.astro`.
+I loghi di affiliazione (ACSI, PTA) sono in `public/uploads/loghi`, in versione leggibile sul footer scuro (il logo CMAS non si usa per via dei loro termini), e si elencano in `src/layouts/Base.astro`.
 
 Le foto non ancora caricate, o che non si caricano (404), mostrano il sasso come segnaposto.
 

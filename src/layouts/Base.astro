@@ -103,6 +103,12 @@ const active = (h: string) => (h === '/' ? path === '/' : path.startsWith(h));
       const open = n!.classList.toggle('open');
       b.setAttribute('aria-expanded', String(open));
     });
+    // External links and uploaded files (PDF, photos) open in a new tab, CMS content included
+    const host = (h: string) => h.replace(/^www\./, '');
+    document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((a) => {
+      const external = /^https?:$/.test(a.protocol) && host(a.hostname) !== host(location.hostname);
+      if (external || a.pathname.startsWith('/uploads/')) { a.target = '_blank'; a.rel = 'noopener'; }
+    });
   </script>
 </body>
 </html>
